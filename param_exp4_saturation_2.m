@@ -10,10 +10,10 @@ clear
 % MRI scan variables
 
 % Changes with basis parameter
-% Use slice 1 as first slice
+% Use slice 2 as bottom slice
 % TI1, ti1 = 0.2s
 
-n_slices    = 4; % total number of slices, analyze slice 1 as perfusion (ETP)
+n_slices    = 4; % total number of slices, analyze slice 2 as bottom slice (ETP)
 n_scans     = 40; % 40 control/label scan pairs (ETP)
 n_acq       = 18; % number of acquisition time points (ETP)
 slide_gap   = 2; % slide gap of 2mm (ETP)
