@@ -8,19 +8,25 @@ clear
 
 % Variables
 % MRI scan variables
-n_slices    = 4; % total number of slices, analyze slice 1 as perfusion (ETP)
+
+% Changes of basis parameter
+% velocity, v_enc = 5, 4, 3, 2, 1 cm/s
+% delta_ti, delta_ti = 0.1
+% number of acquisition time, n_acq = 27
+
+n_slices    = 4; % total number of slices (ETP)
 n_scans     = 40; % 40 control/label scan pairs (ETP)
-n_acq       = 18; % number of acquisition time points (ETP)
+n_acq       = 27; % number of acquisition time points (ETP)
 slide_gap   = 2; % slide gap of 2mm (ETP)
 m           = 64; % dimension of matrix 64x64 (ETP)
 fov         = 240; % field of view 240mm (ETP)
-flip_angle  = 2 * pi / 360 * [35]; % flip angle of 30 degrees (ETP)
+flip_angle  = 2 * pi / 360 * [30]; % flip angle of 30 degrees (ETP)
 tr          = 4; % repitition time 4000ms (ETP)
 te          = 0.023; % echo time 23ms (ETP)
-ti1         = 0.2; % TI1 or labeling delay of 50ms, figre 2 (ETP)
-delta_ti    = 0.2; % interval between excitation pulses, figure 2 (ETP)
+ti1         = 0.05; % TI1 or labeling delay of 50ms, figre 2 (ETP)
+delta_ti    = 0.1; % interval between excitation pulses, figure 2 (ETP)
 tau_b       = [1.05]; % bolus duration time (ETP)
 tau_s       = 2.25; % bolus saturation duration time (ETP)
 gap         = 30; % slice inversion gap (ETP)
 width_in_sl = 150; % inversion slab width (ETP)
-v_enc       = [3]; % velocity of bipolar gradients at 3cm/s (ETP)
+v_enc       = [5, 4, 3, 2, 1]; % velocity of bipolar gradients (ETP)
