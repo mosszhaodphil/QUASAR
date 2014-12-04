@@ -8,8 +8,10 @@ clear
 
 % Variables
 % User input variables
-f = 0 : 0.1 : 5; % CBF
+f   = 1.2; % CBF
 tau = 1; % Bolus arrival time
+t1  = 1.1; % tissue relaxation time
+t   = 0 : 0.1 : 5; % time variable
 
 
 % save the these variables in a file
