@@ -8,11 +8,8 @@
 
 function residue_r = calculate_residue_r_Buxton(t)
 
-	tau   = 0.8;
-	lamda = 0.9;
-	f     = 0.2;
-
-	% t = 0.5 : 0.1 : 3;
+	load('param_user.mat');
+	load('param_basis.mat');
 
 	residue_r = zeros(length(t), 1); % create zero vector for residue function values
 

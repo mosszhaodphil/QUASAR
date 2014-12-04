@@ -8,7 +8,9 @@
 
 function residue_R = calculate_residue_R_QUASAR(t)
 
-	t = 0 : 0.1 : 5; % Hard code, this line should be deleted
+	% t = 0 : 0.1 : 5; % Hard code, this line should be deleted
+	load('param_user.mat');
+	load('param_basis.mat');
 
 	residue_R = zeros(length(t), 1); % initiate residue array
 
