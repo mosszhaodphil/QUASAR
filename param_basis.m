@@ -24,6 +24,7 @@ tau_s       = 2.25; % bolus saturation duration time (ETP)
 gap         = 30; % slice inversion gap (ETP)
 width_in_sl = 150; % inversion slab width (ETP)
 v_enc       = [3]; % velocity of bipolar gradients at 3cm/s (ETP)
+lamda       = 0.9; % blood tissue partition coefficient (ETP)
 
 % save the these variables in a file
 filename = 'param_basis.mat';
