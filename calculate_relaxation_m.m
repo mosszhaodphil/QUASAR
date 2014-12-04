@@ -11,11 +11,11 @@ function relaxation_m = calculate_relaxation_m(t)
 	tau = 0.8;
 	t1  = 3;
 
-	t = 0.5 : 0.1 : 3;
+	% t = 0.5 : 0.1 : 3;
 
 	relaxation_m = zeros(length(t), 1); % create zero vector for relaxation function values
 
-	for j = 1 : length(residue_r)
+	for j = 1 : length(t)
 		if(t(j) < tau)
 			relaxation_m(j) = 0; % relaxation function values remains zero
 

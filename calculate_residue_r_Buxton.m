@@ -12,11 +12,11 @@ function residue_r = calculate_residue_r_Buxton(t)
 	lamda = 0.9;
 	f     = 0.2;
 
-	t = 0.5 : 0.1 : 3;
+	% t = 0.5 : 0.1 : 3;
 
 	residue_r = zeros(length(t), 1); % create zero vector for residue function values
 
-	for j = 1 : length(residue_r)
+	for j = 1 : length(t)
 		if(t(j) < tau)
 			residue_r(j) = 0; % residue function values remains zero
 
