@@ -6,7 +6,7 @@
 
 % This function calculates the residue function r(t - tau), eq [2] (MG). tau or t' is bolus arrival time
 
-function residue_r = calculate_residue_r(t)
+function residue_r = calculate_residue_r_Buxton(t)
 
 	tau   = 0.8;
 	lamda = 0.9;
