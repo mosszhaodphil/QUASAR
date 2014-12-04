@@ -27,4 +27,4 @@ v_enc       = [3]; % velocity of bipolar gradients at 3cm/s (ETP)
 
 % save the these variables in a file
 filename = 'param_basis.mat';
-save(filename); 
+save(filename);
