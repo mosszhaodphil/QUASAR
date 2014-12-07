@@ -8,10 +8,16 @@ clear
 
 % Variables
 % User input variables
-f   = 1.2; % CBF
+f   = 32; % CBF
+arterial_blood_volume = 0.81; % arterial blood volume
 tau = 1; % Bolus arrival time
-t1  = 1.1; % tissue relaxation time
+t1  = 1.3; % T1 relaxation of tissue
 t   = 0 : 0.1 : 5; % time variable
+m_0a = 1; % equilibrium magnetization of arterial blood
+inversion_efficiency = 0.9; % inversion efficiency alpha
+crush_efficiency = 0.35; % percentage of arterial blood signal removed
+
+dispersion_type = 1; % no dispersion
 
 
 % save the these variables in a file
