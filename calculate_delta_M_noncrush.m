@@ -13,6 +13,6 @@ function delta_M_noncrush = calculate_delta_M_noncrush(t)
 	delta_M_tissue = calculate_delta_M_tissue(t);
 	delta_M_blood = calculate_delta_M_blood(t);
 
-	delta_M_crush = delta_M_tissue + delta_M_blood;
+	delta_M_noncrush = delta_M_tissue + delta_M_blood;
 
 end
