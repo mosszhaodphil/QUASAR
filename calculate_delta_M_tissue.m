@@ -42,7 +42,7 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 		% calculate c(t)
 		input_function(j) = exp((-t(j)) / t1_t) * aif_dispersion(j);
 		% calculate ASL signal
-		delta_M_tissue(j) = 2 * inversion_efficiency * m_0a * f * input_function(j) * residue_buxton(j) * magnetization_buxton(j);
+		delta_M_tissue(j) = 2 * inversion_efficiency * m_0a * f * conv(input_function(j), residue_buxton(j) * magnetization_buxton(j));
 	end
 
 end
