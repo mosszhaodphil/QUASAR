@@ -13,8 +13,7 @@ function delta_M = calculate_delta_M(t)
 	load('param_basis.mat');
 
 	residue_R = calculate_residue_R_QUASAR(t); % calculate residue R
-
-	aif = calculate_aif(t); % calculate arterial input function AIF
+	aif       = calculate_aif(t); % calculate arterial input function AIF
 
 	aif_triangle = convert_to_low_tri(aif); % convert AIF to lower triangluar matrix as in eq [12] of (ETP)
 

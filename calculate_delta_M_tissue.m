@@ -16,11 +16,10 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	load('param_user.mat');
 	load('param_basis.mat');
 
-	delta_M_tissue = zeros(length(t), 1); % ASL signal of tissue
-
-	input_function = zeros(length(t), 1); % c(t) of (MACQ)
-	aif_dispersion = zeros(length(t), 1); % a(t) of (MACQ)
-	residue_buxton = zeros(length(t), 1); % r(t) of (MACQ)
+	delta_M_tissue       = zeros(length(t), 1); % ASL signal of tissue
+	input_function       = zeros(length(t), 1); % c(t) of (MACQ)
+	aif_dispersion       = zeros(length(t), 1); % a(t) of (MACQ)
+	residue_buxton       = zeros(length(t), 1); % r(t) of (MACQ)
 	magnetization_buxton = zeros(length(t), 1); % m(t) of (MACQ)
 
 

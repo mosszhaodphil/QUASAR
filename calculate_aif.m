@@ -9,7 +9,7 @@ function aif = calculate_aif(t)
 	load('param_basis.mat');
 	load('param_user.mat');
 
-	n = zeros(length(t), 1);
+	n   = zeros(length(t), 1);
 	aif = zeros(length(t), 1);
 
 	delivery = calculate_delivery(t); % calculate delivery function c(t)

@@ -9,12 +9,11 @@ function delivery = calculate_delivery(t)
 	load('param_basis.mat');
 	load('param_user.mat');
 
-	delta_M_ncr = calculate_delta_M_noncrush(t);
-	delta_M_cr = calculate_delta_M_crush(t);
+	delta_M_ncr  = calculate_delta_M_noncrush(t);
+	delta_M_cr   = calculate_delta_M_crush(t);
 	delta_M_diff = delta_M_ncr - delta_M_cr; % variable to save the difference of noncrushed and crushed ASL signal
 
 	integration_delta_M = zeros(length(t), 1); % this variable saves the integration part of eq [9]
-
 
 	% calculate integration_delta_M
 	integration_delta_M(1) = delta_ti * delta_M_diff(1);

@@ -12,7 +12,7 @@ function delta_M_crush = calculate_delta_M_crush(t)
 	load('param_basis.mat');
 
 	delta_M_tissue = calculate_delta_M_tissue(t);
-	delta_M_blood = calculate_delta_M_blood(t);
+	delta_M_blood  = calculate_delta_M_blood(t);
 
 	delta_M_crush = delta_M_tissue + crush_efficiency * delta_M_blood;
 

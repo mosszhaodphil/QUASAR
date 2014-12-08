@@ -10,8 +10,8 @@ function delta_M = calculate_ASL_signal(t)
 	load('param_user.mat');
 
 	delta_M = zeros(length(t), 1);
-
-	aif_vector = calculate_aif(t); % calculate AIF(t) in eq [12] (ETP)
+	
+	aif_vector       = calculate_aif(t); % calculate AIF(t) in eq [12] (ETP)
 	residue_R_vector = calculate_residue_R_QUASAR(t); % calculate R(t) in eq[12] (ETP)
 
 	% convert aif_vector to lower triangular matrix
