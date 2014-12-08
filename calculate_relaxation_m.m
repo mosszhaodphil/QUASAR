@@ -19,7 +19,7 @@ function relaxation_m = calculate_relaxation_m(t)
 			relaxation_m(j) = 0; % relaxation function values remains zero
 
 		elseif (t(j) >= tau)
-			relaxation_m(j) = exp((-(t(j) - tau)) / t1);
+			relaxation_m(j) = exp((-(t(j) - tau)) / t1_t);
 		
 		else
 			% do nothing at the moment

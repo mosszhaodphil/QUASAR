@@ -30,7 +30,7 @@ function delta_M_blood = calculate_delta_M_blood(t)
 	end
 
 	for j = 1 : length(t)
-		input_function(j) = exp((-t(j)) / t1) * aif_dispersion(j); % calculate c(t)
+		input_function(j) = exp((-t(j)) / t1_t) * aif_dispersion(j); % calculate c(t)
 		delta_M_blood(j) = 2 * inversion_efficiency * m_0a * arterial_blood_volume * input_function(j); % calculate ASL signal
 	end
 
