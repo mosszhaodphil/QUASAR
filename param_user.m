@@ -11,7 +11,6 @@ clear
 f   = 32; % CBF
 arterial_blood_volume = 0.81; % arterial blood volume
 tau = 1; % Bolus arrival time
-tau_b = 1.2 ; bolus duration
 t1  = 1.3; % T1 relaxation of tissue
 t   = 0 : 0.1 : 5; % time variable
 m_0a = 1; % equilibrium magnetization of arterial blood
