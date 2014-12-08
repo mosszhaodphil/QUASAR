@@ -12,8 +12,6 @@ function delta_M = calculate_delta_M(t)
 	load('param_user.mat');
 	load('param_basis.mat');
 
-	t = 0.5 : 0.1 : 3; % this line should be deleted
-
 	residue_R = calculate_residue_R_QUASAR(t); % calculate residue R
 
 	aif = calculate_aif(t); % calculate arterial input function AIF
