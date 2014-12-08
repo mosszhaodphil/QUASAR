@@ -6,10 +6,24 @@
 % This function calculates the artierial input function AIF, eq [8] (ETP)
 function aif = calculate_aif(t)
 
-	load ('param_basis.mat');
+	load('param_basis.mat');
+	load('param_user.mat');
 
-	c = calculate_delivery(t); % calculate delivery function c(t)
+	n = zeros(length(t), 1);
+	aif = zeros(length(t), 1);
 
-	aif = 2 * m_a0 * alpha * (cos(flip_angle)) ^ n * c; % eq [8]
+	delivery = calculate_delivery(t); % calculate delivery function c(t)
 
+	for j = 1 : length(t)
+		% calculate n
+		if(t(j) < tau)
+			n(j) = 0;
+		elseif (t(j) >= tau)
+			n(j) = floor((t(j) - tau) / delta_ti);
+		end
+		
+		% calculate AIF
+		aif(j) = 2 * m_0a * inversion_efficiency * (cos(flip_angle)) ^ n(j) * delivery(j); % eq [8]
+
+	end
 end
