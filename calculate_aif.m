@@ -12,7 +12,7 @@ function aif = calculate_aif(t)
 	n   = zeros(length(t), 1);
 	aif = zeros(length(t), 1);
 
-	delivery = calculate_delivery(t); % calculate delivery function c(t)
+	delivery_c = calculate_delivery_Buxton(t); % calculate delivery function c(t)
 
 	for j = 1 : length(t)
 		% calculate n
@@ -23,7 +23,7 @@ function aif = calculate_aif(t)
 		end
 		
 		% calculate AIF
-		aif(j) = 2 * m_0a * inversion_efficiency * (cos(flip_angle)) ^ n(j) * delivery(j); % eq [8]
+		aif(j) = 2 * m_0a * inversion_efficiency * (cos(flip_angle)) ^ n(j) * delivery_c(j); % eq [8]
 
 	end
 end
