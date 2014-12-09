@@ -18,18 +18,11 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 
 	delta_M_tissue       = zeros(length(t), 1); % ASL signal of tissue
 	input_function       = zeros(length(t), 1); % c(t) of (MACQ)
-	aif_dispersion       = zeros(length(t), 1); % a(t) of (MACQ)
 	residue_buxton       = zeros(length(t), 1); % r(t) of (MACQ)
 	magnetization_buxton = zeros(length(t), 1); % m(t) of (MACQ)
 
-
-	% calculate dispersion
-	switch dispersion_type
-		case 1
-			aif_dispersion = calculate_aif_no_dispersion(t); % calculate dispersion effect of AIF
-		otherwise
-			% do nothing now
-	end
+	% calculate c(t)
+	input_function = calculate_delivery_Buxton(t);
 
 	% calculate r(t)
 	residue_buxton = calculate_residue_r_Buxton(t);
@@ -39,8 +32,6 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 
 
 	for j = 1 : length(t)
-		% calculate c(t)
-		input_function(j) = exp((-t(j)) / t1_a) * aif_dispersion(j);
 		% calculate ASL signal
 		delta_M_tissue(j) = 2 * inversion_efficiency * m_0a * f * conv(input_function(j), residue_buxton(j) * magnetization_buxton(j));
 	end
