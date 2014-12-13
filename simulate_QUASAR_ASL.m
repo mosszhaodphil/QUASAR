@@ -12,25 +12,44 @@ date_time_format = 'yyyymmdd_HHMMSS'; % date and time format
 date_time_now = clock; % get vector of current time
 date_time = datestr(date_time_now, date_time_format); % convert current time vector to string
 
-signal_file_name = 'quasar_signal.txt'; % Default file name
-nifty_file_name = 'signal.nii.gz';
 dir_name = strcat('output_', date_time); % Default directory name
 
-% construct a vector to store ASL signals at different sampling points specified by variable t
-quasar_asl_signal = zeros(length(t), 1);
+file_name_quasar = 'signal_quasar'; % file name to save QUASAR ASL signal
+file_name_crushed = 'signal_crushed'; % file name to save crushed ASL signal
+file_name_noncrushed = 'signal_noncrushed'; % file name to save noncrushed ASL signal
+file_type_txt = '.txt';
+file_type_nifty = '.nii.gz';
 
-% calculate QUASAR ASL signal
-quasar_asl_signal = calculate_ASL_signal(t);
+% Simulate QUASAR ASL signal and save it to file
+quasar_asl_signal = zeros(length(t), 1); % construct a vector to store ASL signals at different sampling points specified by variable t
+quasar_asl_signal = calculate_ASL_signal(t); % calculate QUASAR ASL signal
+quasar_nifty_file_handle = make_nifty_file(quasar_asl_signal); % make nifty file from ASL signal
 
-% make nifty file from ASL signal
-nifty_file_handle = make_nifty_file(quasar_asl_signal);
+% Simulate crushed ASL signal and save it to file
+crushed_asl_signal = zeros(length(t), 1);
+crushed_asl_signal = calculate_delta_M_crush(t);
+crushed_nifty_file_handle = make_nifty_file(crushed_asl_signal);
+
+% Simulate noncrushed ASL signal and save it to file
+noncrushed_asl_signal = zeros(length(t), 1);
+noncrushed_asl_signal = calculate_delta_M_noncrush(t);
+noncrushed_nifty_file_handle = make_nifty_file(noncrushed_asl_signal);
+
+
 
 % Save simulated ASL data file in the new directory
 mkdir(dir_name);
 cd(dir_name);
-dlmwrite(signal_file_name, quasar_asl_signal); % save ASL data to a text file
-save_nii(nifty_file_handle, nifty_file_name);% save nifty file
+dlmwrite(strcat(file_name_quasar, file_type_txt), quasar_asl_signal); % save QUASAR ASL data to a text file
+save_nii(quasar_nifty_file_handle, strcat(file_name_quasar, file_type_nifty)); % save QUASAR ASL nifty file
+dlmwrite(strcat(file_name_crushed, file_type_txt), crushed_asl_signal); % save crushed ASL data to a text file
+save_nii(crushed_nifty_file_handle, strcat(file_name_crushed, file_type_nifty)); % save crushed ASL nifty file
+dlmwrite(strcat(file_name_noncrushed, file_type_txt), noncrushed_asl_signal); % save noncrushed ASL data to a text file
+save_nii(noncrushed_nifty_file_handle, strcat(file_name_noncrushed, file_type_nifty)); % save noncrushed ASL nifty file
 
-
+% go back to working directory
+cd('../');
 % quit matlab program (some machines require this step)
 % quit;
+
+
