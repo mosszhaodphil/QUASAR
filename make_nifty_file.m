@@ -21,6 +21,10 @@ function nifty_file_handle = make_nifty_file(asl_signal)
 	% t is the total number of sampling points
 	nifty_file_handle.hdr.dime.dim(2 : 5) = [m, m, n_slices, length(t)];
 
+	% set max and min display intensity in the same range of signal intensity
+	nifty_file_handle.hdr.dime.cal_max = max(asl_signal);
+	nifty_file_handle.hdr.dime.cal_min = min(asl_signal);
+
 	% create an empty matrix based on dimension in header
 	asl_signal_matrix = zeros(m, m, n_slices, length(t));
 
