@@ -8,7 +8,7 @@ clear
 
 % Variables
 % User input variables
-f                     = 32; % CBF
+f                     = 32 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
 arterial_blood_volume = 0.81; % arterial blood volume
 tau                   = 1; % Bolus arrival time
 t1_t                  = 1.3; % T1 relaxation of tissue
