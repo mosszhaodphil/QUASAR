@@ -21,16 +21,10 @@ function delta_M_blood = calculate_delta_M_blood(t)
 	input_function = zeros(length(t), 1); % c(t) of (MACQ)
 	aif_dispersion = zeros(length(t), 1); % a(t) of (MACQ)
 
-	% calculate dispersion
-	switch dispersion_type
-		case 1
-			aif_dispersion = calculate_aif_no_dispersion(t); % calculate dispersion effect of AIF
-		otherwise
-			% do nothing now
-	end
+	% calculate c(t)
+	input_function = calculate_delivery_Buxton(t);
 
 	for j = 1 : length(t)
-		input_function(j) = exp((-t(j)) / t1_t) * aif_dispersion(j); % calculate c(t)
 		delta_M_blood(j) = 2 * inversion_efficiency * m_0a * arterial_blood_volume * input_function(j); % calculate ASL signal
 	end
 
