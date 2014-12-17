@@ -4,7 +4,7 @@
 % ET Petersen (2006) doi: 10.1002/mrm.20784 (ETP)
 
 % This function calculates the arterial input function a(t) when there is no dispersion, eq [6] (MAQ)
-% tau or delta_t_a is bolus arrival time
+% tau_t or delta_t_a is bolus arrival time to tissue voxel
 
 function aif_dispersion = calculate_aif_no_dispersion(t)
 
@@ -14,10 +14,10 @@ function aif_dispersion = calculate_aif_no_dispersion(t)
 	aif_dispersion = zeros(length(t), 1); % create zero vector for residue function values
 
 	for j = 1 : length(t)
-		if(t(j) < tau)
+		if(t(j) < tau_t)
 			aif_dispersion(j) = 0; % residue function values remains zero
 
-		elseif (t(j) >= tau)
+		elseif (t(j) >= tau_t)
 			aif_dispersion(j) = 1;
 		
 		else
