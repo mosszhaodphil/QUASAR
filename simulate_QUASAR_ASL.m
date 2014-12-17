@@ -22,7 +22,7 @@ file_type_nifty = '.nii.gz';
 
 % Simulate QUASAR ASL signal and save it to file
 quasar_asl_signal = zeros(length(t), 1); % construct a vector to store ASL signals at different sampling points specified by variable t
-quasar_asl_signal = calculate_ASL_signal(t); % calculate QUASAR ASL signal
+quasar_asl_signal = calculate_QUASAR_ASL_signal(t); % calculate QUASAR ASL signal
 quasar_nifty_file_handle = make_nifty_file(quasar_asl_signal); % make nifty file from ASL signal
 quasar_asl_figure_handle = plot_quasar_signal(quasar_asl_signal, t);
 
@@ -39,7 +39,7 @@ noncrushed_nifty_file_handle = make_nifty_file(noncrushed_asl_signal);
 noncrushed_asl_figure_handle = plot_noncrushed_signal(noncrushed_asl_signal, t);
 
 % Plot YY curve of three signals
-yy_figure_handle = plot_signal_yy([quasar_asl_signal crushed_asl_signal noncrushed_asl_signal], t);
+yy_figure_handle = plot_signal([quasar_asl_signal crushed_asl_signal noncrushed_asl_signal], t);
 
 % Save simulated ASL data file in the new directory
 mkdir(dir_name);
