@@ -4,7 +4,7 @@
 % ET Petersen (2006) doi: 10.1002/mrm.20784 (ETP)
 % M  Günther  (1998) doi: 10.1002/mrm.1284 (MG)
 
-% This function calculates the magnetic relaxation function m(t - tau_t), eq [6] (MG). tau or t' is bolus arrival time to tissue
+% This function calculates the magnetic relaxation function m(t - tau_t), eq [6] (MG). tau_t or t' is bolus arrival time to tissue
 % Since the term (cos(alpha)) ^ n is considered in AIF calculation, m(t - tau_t) = exp((-(t - tau_t)) / T1)
 
 function relaxation_m = calculate_relaxation_m(t)
