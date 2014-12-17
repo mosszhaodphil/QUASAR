@@ -11,7 +11,7 @@ clear
 f                     = 32 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
 arterial_blood_volume = 0.81 / 100; % arterial blood volume in percentage
 tau_t                 = 1; % Bolus arrival time to tissue
-tau_m                 = 1.2 % Bolus arrival time to macrovascular
+tau_m                 = 1.2; % Bolus arrival time to macrovascular
 t1_t                  = 1.3; % T1 relaxation of tissue
 t1_a                  = 1.65; % T1 relaxation of arterial blood, in postprocessing section of (ETP)
 t                     = 0 : 0.2 : 10; % sampling time pints, second variable must be equal to delta_ti
