@@ -4,7 +4,7 @@
 % ET Petersen (2006) doi: 10.1002/mrm.20784 (ETP)
 % M  Günther  (1998) doi: 10.1002/mrm.1284 (MG)
 
-% This function calculates the residue function r(t - tau), eq [2] (MG). tau or t' is bolus arrival time
+% This function calculates the residue function r(t - tau_t), eq [2] (MG). tau_t or t' is bolus arrival time
 
 function residue_r = calculate_residue_r_Buxton(t)
 
@@ -14,11 +14,11 @@ function residue_r = calculate_residue_r_Buxton(t)
 	residue_r = zeros(length(t), 1); % create zero vector for residue function values
 
 	for j = 1 : length(t)
-		if(t(j) < tau)
+		if(t(j) < tau_t)
 			residue_r(j) = 0; % residue function values remains zero
 
-		elseif (t(j) >= tau)
-			residue_r(j) = exp((-(t(j) - tau)) * f / lamda);
+		elseif (t(j) >= tau_t)
+			residue_r(j) = exp((-(t(j) - tau_t)) * f / lamda);
 		
 		else
 			% do nothing at the moment
