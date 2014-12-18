@@ -22,7 +22,7 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	magnetization_buxton = zeros(length(t), 1); % m(t) of (MACQ)
 
 	% calculate c(t)
-	input_function = calculate_delivery_Buxton(t);
+	input_function = calculate_delivery_tissue_Buxton(t);
 
 	% calculate r(t)
 	residue_buxton = calculate_residue_r_Buxton(t);
