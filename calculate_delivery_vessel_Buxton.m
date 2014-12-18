@@ -11,8 +11,8 @@ function delivery_vessel_Buxton = calculate_delivery_vessel_Buxton(t)
 	load('param_user.mat');
 
 	delivery_vessel_Buxton = zeros(length(t), 1);
-	aif_dispersion_vessel = zeros(length(t), 1);
-	delivery_Buxton = zeros(length(t), 1);
+	aif_dispersion_vessel  = zeros(length(t), 1);
+	delivery_Buxton        = zeros(length(t), 1);
 
 	% calculate Buxton's delivery c(t)
 	delivery_Buxton = calculate_delivery_Buxton(t);

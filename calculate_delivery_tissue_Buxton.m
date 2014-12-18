@@ -11,8 +11,8 @@ function delivery_tissue_Buxton = calculate_delivery_tissue_Buxton(t)
 	load('param_user.mat');
 
 	delivery_tissue_Buxton = zeros(length(t), 1);
-	aif_dispersion_tissue = zeros(length(t), 1);
-	delivery_Buxton = zeros(length(t), 1);
+	aif_dispersion_tissue  = zeros(length(t), 1);
+	delivery_Buxton        = zeros(length(t), 1);
 
 	% calculate Buxton's delivery c(t)
 	delivery_Buxton = calculate_delivery_Buxton(t);

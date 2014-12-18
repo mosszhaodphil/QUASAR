@@ -16,8 +16,7 @@ function delta_M_blood = calculate_delta_M_blood(t)
 	load('param_user.mat');
 	load('param_basis.mat');
 
-	delta_M_blood = zeros(length(t), 1); % ASL signal of tissue
-
+	delta_M_blood  = zeros(length(t), 1); % ASL signal of tissue
 	input_function = zeros(length(t), 1); % c(t) of (MACQ)
 	aif_dispersion = zeros(length(t), 1); % a(t) of (MACQ)
 
