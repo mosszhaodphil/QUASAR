@@ -6,7 +6,6 @@
 
 % This function calculates ASL signal deltaM of tissue using Buxton's model (RBB)
 % The same method is also used in equation [5] of (MACQ)
-% Assuming no dispersion of bolus between labeling and imaging sites
 % delta_M_tissue = 2 * alpha * M0a * f * (c(t) * r(t) * m(t))
 % c(t) = exp(-1 / T1a) * a(t)
 % a(t) depends on dispersion
