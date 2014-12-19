@@ -16,13 +16,12 @@ function delta_M_blood = calculate_delta_M_blood(t)
 	load('param_user.mat');
 	load('param_basis.mat');
 
-	delta_M_blood = zeros(length(t), 1); % ASL signal of tissue
-
+	delta_M_blood  = zeros(length(t), 1); % ASL signal of tissue
 	input_function = zeros(length(t), 1); % c(t) of (MACQ)
 	aif_dispersion = zeros(length(t), 1); % a(t) of (MACQ)
 
 	% calculate c(t)
-	input_function = calculate_delivery_Buxton(t);
+	input_function = calculate_delivery_vessel_Buxton(t);
 
 	for j = 1 : length(t)
 		delta_M_blood(j) = 2 * inversion_efficiency * m_0a * arterial_blood_volume * input_function(j); % calculate ASL signal
