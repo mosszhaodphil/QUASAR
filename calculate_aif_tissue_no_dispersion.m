@@ -17,8 +17,11 @@ function aif_dispersion = calculate_aif_tissue_no_dispersion(t)
 		if(t(j) < tau_t)
 			aif_dispersion(j) = 0; % residue function values remains zero
 
-		elseif (t(j) >= tau_t)
+		elseif ((t(j) >= tau_t) && (t(j) < tau_t + tau_b))
 			aif_dispersion(j) = 1;
+		
+		elseif (t(j) >= tau_t + tau_b)
+			aif_dispersion(j) = 0;
 		
 		else
 			% do nothing at the moment

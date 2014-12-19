@@ -14,11 +14,14 @@ function aif_dispersion = calculate_aif_vessel_no_dispersion(t)
 	aif_dispersion = zeros(length(t), 1); % create zero vector for residue function values
 
 	for j = 1 : length(t)
-		if(t(j) < tau_m)
+		if (t(j) < tau_m)
 			aif_dispersion(j) = 0; % residue function values remains zero
 
-		elseif (t(j) >= tau_m)
+		elseif ((t(j) >= tau_m) && (t(j) < tau_m + tau_b))
 			aif_dispersion(j) = 1;
+
+		elseif (t(j) >= tau_m + tau_b)
+			aif_dispersion(j) = 0;
 		
 		else
 			% do nothing at the moment
