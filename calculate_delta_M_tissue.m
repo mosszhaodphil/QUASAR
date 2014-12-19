@@ -19,9 +19,11 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	input_function       = zeros(length(t), 1); % c(t) of (MACQ)
 	residue_buxton       = zeros(length(t), 1); % r(t) of (MACQ)
 	magnetization_buxton = zeros(length(t), 1); % m(t) of (MACQ)
+	Residue = zeros(length(t), 1);
 
 	% calculate c(t)
 	input_function = calculate_delivery_tissue_Buxton(t);
+	input_function_matrix = convert_to_low_tri(input_function);
 
 	% calculate r(t)
 	residue_buxton = calculate_residue_r_Buxton(t);
@@ -34,6 +36,13 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 		% calculate ASL signal
 		delta_M_tissue(j) = 2 * inversion_efficiency * m_0a * f * conv(input_function(j), residue_buxton(j) * magnetization_buxton(j));
 	end
+
+	for j = 1 : length(t)
+		% R(t) = r(t) * m(t)
+		Residue(j) = residue_buxton(j) * magnetization_buxton(j);
+	end
+
+	delta_M_tissue = 2 * inversion_efficiency * m_0a * f * delta_ti * input_function_matrix * Residue;
 
 end
 
