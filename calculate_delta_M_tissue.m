@@ -41,10 +41,10 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 		residue_product(j) = residue_buxton(j) * magnetization_buxton(j);
 	end
 
-	% calculate tissue signal
-	% C(tj) as in eq [10] of (LO)
-	% signal = 2 * alpha * m0a * f * C(tj)
-	% The term delta_ti should be removed in C(tj)
-	delta_M_tissue = 2 * inversion_efficiency * m_0a * f * input_function_matrix * residue_product;
+	% calculate convolution (first length(t) number of elements)
+	convolution_result = calculate_convolution_asl(input_function, residue_product);
+
+	% calculate ASL signal
+	delta_M_tissue = 2 * inversion_efficiency * m_0a * f * convolution_result;
 end
 
