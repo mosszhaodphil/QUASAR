@@ -35,7 +35,6 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 
 	% calculate r(t) * m(t)
 	for j = 1 : length(t)
-		% R(t) = r(t) * m(t)
 		residue_product(j) = residue_buxton(j) * magnetization_buxton(j);
 	end
 
