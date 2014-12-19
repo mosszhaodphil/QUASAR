@@ -11,32 +11,44 @@ function figure_handle = subplot_signal(signal_matrix, t)
 	figure('visible','off'); % not display the figure during drawing
 	y_axis_range = [0 0.01]; % Y axis range of plots
 
+	% Plot QUASAR (Tissue) Curve
 	subplot(2, 2, 1);
 	quasar_curve = plot(t, signal_matrix(:, 1), 'Color', 'b');
 	ylim(y_axis_range);
+	xlabel('Time(sec)');
+	ylabel('Signal');
+	title('QUASAR (Tissue) signal');
 	grid on;
-	title('QUASAR (Tissue) curve');
 	hold on;
 
+	% Plot Blood Curve
 	subplot(2, 2, 2);
 	noncrushed_curve = plot(t, signal_matrix(:, 2), 'Color', 'm');
 	ylim(y_axis_range);
+	xlabel('Time(sec)');
+	ylabel('Signal');
+	title('Blood signal');
 	grid on;
-	title('Blood curve');
 	hold on;
 
+	% Plot Crushed ASL Curve
 	subplot(2, 2, 3);
 	crushed_curve = plot(t, signal_matrix(:, 3), 'Color', 'r');
 	ylim(y_axis_range);
+	xlabel('Time(sec)');
+	ylabel('Signal');
+	title('Crushed ASL signal');
 	grid on;
-	title('Crushed curve');
 	hold on;
 
+	% Plot Noncrushed ASL Curve
 	subplot(2, 2, 4);
 	noncrushed_curve = plot(t, signal_matrix(:, 4), 'Color', 'g');
 	ylim(y_axis_range);
+	xlabel('Time(sec)');
+	ylabel('Signal');
+	title('Noncrushed ASL signal');
 	grid on;
-	title('Noncrushed curve');
 	hold on;
 
 	figure_handle = gcf; % return the figure handle
