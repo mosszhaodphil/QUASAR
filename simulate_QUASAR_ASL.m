@@ -26,9 +26,9 @@ quasar_nifty_file_handle = make_nifty_file(quasar_asl_signal); % make nifty file
 quasar_asl_figure_handle = plot_quasar_signal(quasar_asl_signal, t); % plot the signal over time
 
 % Simulate Blood ASL signal and save it to file
-blood_asl_signal = zeros(length(t), 1);
-blood_asl_signal = calculate_delta_M_blood(t);
-blood_nifty_file_handle = make_nifty_file(blood_asl_signal); % make nifty file from QUASAR ASL signal
+blood_asl_signal        = zeros(length(t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
+blood_asl_signal        = calculate_delta_M_blood(t); % calculate Blood ASL signal
+blood_nifty_file_handle = make_nifty_file(blood_asl_signal); % make nifty file from Blood ASL signal
 blood_asl_figure_handle = plot_blood_signal(blood_asl_signal, t); % plot the signal over time
 
 % Simulate crushed ASL signal and save it to file
@@ -44,7 +44,7 @@ noncrushed_nifty_file_handle = make_nifty_file(noncrushed_asl_signal); % make ni
 noncrushed_asl_figure_handle = plot_noncrushed_signal(noncrushed_asl_signal, t); % plot the signal over time
 
 
-% Plot summary curve of four signals
+% Plot summary curve (4x4) of four signals
 summary_figure_handle = subplot_signal([quasar_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], t);
 
 % Save simulated ASL data file in the new directory
@@ -67,7 +67,7 @@ dlmwrite(strcat(file_name_noncrushed, file_type_txt), noncrushed_asl_signal); % 
 save_nii(noncrushed_nifty_file_handle, strcat(file_name_noncrushed, file_type_nifty)); % save noncrushed ASL nifty file
 print(noncrushed_asl_figure_handle, '-dpng', file_name_noncrushed, '-r300'); % save noncrushed ASL signal time series figure
 
-print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save QUASAR ASL signal time series figure
+print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
 % go back to working directory
 cd('../');
