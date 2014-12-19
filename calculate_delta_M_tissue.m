@@ -10,7 +10,10 @@
 % delta_M_tissue = 2 * alpha * M0a * f * (c(t) * r(t) * m(t))
 % c(t) = exp(-1 / T1a) * a(t)
 % a(t) depends on dispersion
-% We use algebraic approach to calculate convolution, eq [11] of (LO)
+% We use algebraic approach to calculate convolution, eq [11] of (LO).
+% However, the term delta_ti should be removed
+% The MATLAB native convolution function conv(A, B) can also be used.
+% But we only need the first (length(t)) number of results from conv(A, B)
 
 function delta_M_tissue = calculate_delta_M_tissue(t)
 
@@ -41,7 +44,6 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	% calculate tissue signal
 	% C(tj) as in eq [10] of (LO)
 	% signal = 2 * alpha * m0a * f * C(tj)
-	delta_M_tissue = 2 * inversion_efficiency * m_0a * f * delta_ti * input_function_matrix * residue_product;
-
+	delta_M_tissue = 2 * inversion_efficiency * m_0a * f * input_function_matrix * residue_product;
 end
 
