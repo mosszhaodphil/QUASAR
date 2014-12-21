@@ -3,7 +3,7 @@
 % MA Chappell (2012) doi: 10.1002/mrm.24260 (MACD)
 % ET Petersen (2006) doi: 10.1002/mrm.20784 (ETP)
 
-% This function calculates the vessel (macrovasculature) delivery function c(t), eq [9] (ETP)
+% This function calculates the vessel (microvasculature) delivery function c(t), eq [9] (ETP)
 % c(t) = exp(-t / t1_a) * vessel_dispersion_function
 function delivery_vessel_Buxton = calculate_delivery_vessel_Buxton(t)
 

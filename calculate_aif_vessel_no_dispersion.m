@@ -3,7 +3,7 @@
 % MA Chappell (2012) doi: 10.1002/mrm.24260 (MACD)
 % ET Petersen (2006) doi: 10.1002/mrm.20784 (ETP)
 
-% This function calculates the arterial input function a(t) of vessel (macrovasculature) when there is no dispersion, eq [6] (MAQ)
+% This function calculates the arterial input function a(t) of vessel (microvasculature) when there is no dispersion, eq [6] (MAQ)
 % tau_m or delta_t_a is bolus arrival time to tissue voxel
 
 function aif_dispersion = calculate_aif_vessel_no_dispersion(t)
