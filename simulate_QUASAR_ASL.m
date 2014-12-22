@@ -1,7 +1,14 @@
 % This program simulate QUASAR ASL data from a set of user parameters in param_user.m
 % The output is a saved in the folder output_yyyymmdd_HHMMSS under the same directory
 
+close all;
+clear all;
+
 % Program begins
+
+% Set parameters
+set_param_basis();
+set_param_user();
 
 % Load parameters
 load('param_basis.mat');
@@ -12,12 +19,12 @@ date_time_now    = clock; % get vector of current time
 date_time        = datestr(date_time_now, date_time_format); % convert current time vector to string
 dir_name         = strcat('output_', date_time); % Default directory name
 
-file_name_quasar     = 'signal_quasar'; % file name to save QUASAR ASL signal
-file_name_blood      = 'signal_blood';
+file_name_quasar     = 'signal_quasar'; % file name to save QUASAR (Tissue) ASL signal
+file_name_blood      = 'signal_blood'; % file name to save Blood ASL signal
 file_name_crushed    = 'signal_crushed'; % file name to save crushed ASL signal
 file_name_noncrushed = 'signal_noncrushed'; % file name to save noncrushed ASL signal
-file_type_txt        = '.txt';
-file_type_nifty      = '.nii.gz';
+file_type_txt        = '.txt'; % text file extension
+file_type_nifty      = '.nii.gz'; % nifty file extension
 
 % Simulate QUASAR (Tissue) ASL signal and save it to file
 quasar_asl_signal        = zeros(length(t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
@@ -71,6 +78,11 @@ print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signa
 
 % go back to working directory
 cd('../');
+
+% delete the binary files
+delete('param_basis.mat');
+delete('param_user.mat');
+
 % quit matlab program (some machines require this step)
 % quit;
 
