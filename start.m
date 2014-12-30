@@ -52,6 +52,9 @@ function start_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to start (see VARARGIN)
 
+% Load default parameters
+set_param_default(handles);
+
 % Choose default command line output for start
 handles.output = hObject;
 
@@ -79,6 +82,55 @@ function pb_plot_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+param_handles = handles;
+
+% Check parameters (to be implemented)
+% Now we assumes everything is correct
+%check_gui_params(param_handles);
+
+% Set parameters
+% Set parameters
+set_param_basis();
+set_param_user(handles);
+
+% Load parameters
+load('param_basis.mat');
+load('param_user.mat', 't');
+
+% Simulate signals
+
+% Simulate QUASAR (Tissue) signal
+quasar_asl_signal = zeros(length(t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
+quasar_asl_signal = calculate_QUASAR_ASL_signal(t); % calculate QUASAR ASL signal
+
+% Simulate Blood ASL signal
+blood_asl_signal = zeros(length(t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
+blood_asl_signal = calculate_delta_M_blood(t); % calculate Blood ASL signal
+
+% Simulate crushed ASL signal and save it to file
+crushed_asl_signal = zeros(length(t), 1); % construct a vector to store Crushed ASL signals at different sampling points specified by variable t
+crushed_asl_signal = calculate_delta_M_crush(t); % calculate Crushed ASL signal
+
+% Simulate noncrushed ASL signal and save it to file
+noncrushed_asl_signal = zeros(length(t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
+noncrushed_asl_signal = calculate_delta_M_noncrush(t); % calculate Noncrushed ASL signal
+
+% Plot four curves
+
+% Plot QUASAR (Tissue) signal curve on upper left
+plot_quasar_signal(quasar_asl_signal, t, handles);
+hold on;
+
+% Plot Blood signal curve on upper right
+plot_blood_signal(blood_asl_signal, t, handles);
+hold on;
+
+% Plot Crushed signal curve on lower left
+plot_crushed_signal(crushed_asl_signal, t, handles);
+hold on;
+
+% Plot Noncrushed signal curve on lower right
+plot_noncrushed_signal(noncrushed_asl_signal, t, handles);
 
 % --- Executes on button press in pb_save.
 function pb_save_Callback(hObject, eventdata, handles)
@@ -93,6 +145,10 @@ function pb_reset_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+% Reset GUI to initial state
+% Remove all plots
+% Assign default to parameters
+reset_gui(handles);
 
 
 function et_cbf_Callback(hObject, eventdata, handles)
