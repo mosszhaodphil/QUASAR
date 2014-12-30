@@ -17,7 +17,7 @@ function relaxation_m = calculate_relaxation_m(t)
 
 	for j = 1 : length(t)
 
-		relaxation_m(j) = exp((-(t(j))) / t1_t);
+		relaxation_m(j) = exp((-(t(j))) / param_user_str.t1_t);
 
 	end % end for loop
 

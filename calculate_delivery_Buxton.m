@@ -14,7 +14,7 @@ function delivery_Buxton = calculate_delivery_Buxton(t)
 
 	% calculate deliver function c(t), eq [5] (MACQ)
 	for j = 1 : length(t)
-		delivery_Buxton(j) = exp((-t(j)) / t1_a);
+		delivery_Buxton(j) = exp((-t(j)) / param_user_str.t1_a);
 	end
 
 end

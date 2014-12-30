@@ -16,7 +16,7 @@ function residue_r = calculate_residue_r_Buxton(t)
 
 	for j = 1 : length(t)
 
-		residue_r(j) = exp((-(t(j))) * f / lamda);
+		residue_r(j) = exp((-(t(j))) * param_user_str.f / param_mr_str.lamda);
 
 	end % end for loop
 
