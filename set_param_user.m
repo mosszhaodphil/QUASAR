@@ -22,14 +22,14 @@ function [] = set_param_user(varargin)
 	param_user_str.dispersion_type       = 1; % no dispersion
 
 	if(length(varargin) == 1)
-		current_handles = varargin{1};
-		param_user_str.f = str2double(get(current_handles.et_cbf, 'String')) / 6000;
+		current_handles                      = varargin{1};
+		param_user_str.f                     = str2double(get(current_handles.et_cbf, 'String')) / 6000;
 		param_user_str.arterial_blood_volume = str2double(get(current_handles.et_abv, 'String')) / 100;
-		param_user_str.tau_t = str2double(get(current_handles.et_tau_t, 'String'));
-		param_user_str.tau_m = str2double(get(current_handles.et_tau_m, 'String'));
-		param_user_str.t1_t = str2double(get(current_handles.et_t1_t, 'String'));
-		param_user_str.t1_a = str2double(get(current_handles.et_t1_a, 'String'));
-		param_user_str.t = eval(get(current_handles.et_ti, 'String'));
+		param_user_str.tau_t                 = str2double(get(current_handles.et_tau_t, 'String'));
+		param_user_str.tau_m                 = str2double(get(current_handles.et_tau_m, 'String'));
+		param_user_str.t1_t                  = str2double(get(current_handles.et_t1_t, 'String'));
+		param_user_str.t1_a                  = str2double(get(current_handles.et_t1_a, 'String'));
+		param_user_str.t                     = eval(get(current_handles.et_ti, 'String'));
 
 	end
 
