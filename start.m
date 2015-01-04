@@ -82,8 +82,6 @@ function pb_plot_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-param_handles = handles;
-
 % Check parameters (to be implemented)
 % Now we assumes everything is correct
 %check_gui_params(param_handles);
@@ -95,38 +93,41 @@ set_param_user(handles); % Set User input parameters
 load('param_basis.mat');
 load('param_user.mat');
 
-% Simulate signals
+% Simulate signals and store the signals to handles structure
 % Simulate QUASAR (Tissue) signal
-quasar_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
-quasar_asl_signal = calculate_QUASAR_ASL_signal(param_user_str.t); % calculate QUASAR ASL signal
+handles.quasar_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
+handles.quasar_asl_signal = calculate_QUASAR_ASL_signal(param_user_str.t); % calculate QUASAR ASL signal
 
 % Simulate Blood ASL signal
-blood_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
-blood_asl_signal = calculate_delta_M_blood(param_user_str.t); % calculate Blood ASL signal
+handles.blood_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
+handles.blood_asl_signal = calculate_delta_M_blood(param_user_str.t); % calculate Blood ASL signal
 
 % Simulate crushed ASL signal and save it to file
-crushed_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Crushed ASL signals at different sampling points specified by variable t
-crushed_asl_signal = calculate_delta_M_crush(param_user_str.t); % calculate Crushed ASL signal
+handles.crushed_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Crushed ASL signals at different sampling points specified by variable t
+handles.crushed_asl_signal = calculate_delta_M_crush(param_user_str.t); % calculate Crushed ASL signal
 
 % Simulate noncrushed ASL signal and save it to file
-noncrushed_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
-noncrushed_asl_signal = calculate_delta_M_noncrush(param_user_str.t); % calculate Noncrushed ASL signal
+handles.noncrushed_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
+handles.noncrushed_asl_signal = calculate_delta_M_noncrush(param_user_str.t); % calculate Noncrushed ASL signal
 
 % Plot four curves
 % Plot QUASAR (Tissue) signal curve on upper left
-plot_quasar_signal(quasar_asl_signal, param_user_str.t, handles);
+plot_quasar_signal(handles.quasar_asl_signal, param_user_str.t, handles);
 hold on;
 
 % Plot Blood signal curve on upper right
-plot_blood_signal(blood_asl_signal, param_user_str.t, handles);
+plot_blood_signal(handles.blood_asl_signal, param_user_str.t, handles);
 hold on;
 
 % Plot Crushed signal curve on lower left
-plot_crushed_signal(crushed_asl_signal, param_user_str.t, handles);
+plot_crushed_signal(handles.crushed_asl_signal, param_user_str.t, handles);
 hold on;
 
 % Plot Noncrushed signal curve on lower right
-plot_noncrushed_signal(noncrushed_asl_signal, param_user_str.t, handles);
+plot_noncrushed_signal(handles.noncrushed_asl_signal, param_user_str.t, handles);
+hold on;
+
+guidata(hObject, handles); % Save the ASL signals to GUI data
 
 % --- Executes on button press in pb_save.
 function pb_save_Callback(hObject, eventdata, handles)
@@ -134,6 +135,9 @@ function pb_save_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+msgbox_save_handle = msgbox('Saving...'); % Pop up message box
+dir_name = save_asl_signal_gui(handles); % Save ASl signal to folder
+set(findobj(msgbox_save_handle,'Tag','MessageBox'),'String', strcat('Results have been saved at ', dir_name));
 
 % --- Executes on button press in pb_reset.
 function pb_reset_Callback(hObject, eventdata, handles)
