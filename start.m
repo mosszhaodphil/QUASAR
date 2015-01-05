@@ -82,10 +82,6 @@ function pb_plot_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Check parameters (to be implemented)
-% Now we assumes everything is correct
-%check_gui_params(param_handles);
-
 set_param_basis(); % Set MR experiment parameters, MR Experiment Section of (ETP)
 set_param_user(handles); % Set User input parameters
 
@@ -136,7 +132,7 @@ function pb_save_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 msgbox_save_handle = msgbox('Saving...'); % Pop up message box
-dir_name = save_asl_signal_gui(handles); % Save ASl signal to folder
+dir_name = save_asl_signal_gui(handles); % Save ASl signal to folder, dir_name is the output directory
 set(findobj(msgbox_save_handle,'Tag','MessageBox'),'String', strcat('Results have been saved at ', dir_name));
 
 % --- Executes on button press in pb_reset.
@@ -149,6 +145,7 @@ function pb_reset_Callback(hObject, eventdata, handles)
 % Remove all plots
 % Assign default to parameters
 reset_gui(handles);
+
 % Delete binary files
 delete('param_basis.mat');
 delete('param_user.mat');
@@ -162,6 +159,8 @@ function et_cbf_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_cbf as text
 %        str2double(get(hObject,'String')) returns contents of et_cbf as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_cbf_CreateFcn(hObject, eventdata, handles)
@@ -185,6 +184,8 @@ function et_abv_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_abv as text
 %        str2double(get(hObject,'String')) returns contents of et_abv as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_abv_CreateFcn(hObject, eventdata, handles)
@@ -208,6 +209,8 @@ function et_t1_a_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_t1_a as text
 %        str2double(get(hObject,'String')) returns contents of et_t1_a as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_t1_a_CreateFcn(hObject, eventdata, handles)
@@ -231,6 +234,8 @@ function et_t1_t_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_t1_t as text
 %        str2double(get(hObject,'String')) returns contents of et_t1_t as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_t1_t_CreateFcn(hObject, eventdata, handles)
@@ -254,6 +259,8 @@ function et_tau_m_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_tau_m as text
 %        str2double(get(hObject,'String')) returns contents of et_tau_m as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_tau_m_CreateFcn(hObject, eventdata, handles)
@@ -277,6 +284,8 @@ function et_tau_t_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_tau_t as text
 %        str2double(get(hObject,'String')) returns contents of et_tau_t as a double
 
+% Check if input parameter is a valid number
+check_gui_params_number(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_tau_t_CreateFcn(hObject, eventdata, handles)
@@ -300,6 +309,8 @@ function et_ti_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of et_ti as text
 %        str2double(get(hObject,'String')) returns contents of et_ti as a double
 
+% Check if input paramter is valid Ti interval
+check_gui_params_ti_interval(hObject);
 
 % --- Executes during object creation, after setting all properties.
 function et_ti_CreateFcn(hObject, eventdata, handles)
