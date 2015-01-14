@@ -18,7 +18,7 @@ function delivery_vessel_Buxton = calculate_delivery_vessel_Buxton(t)
 	delivery_Buxton = calculate_delivery_Buxton(t);
 
 	% calculate dispersion
-	switch dispersion_type
+	switch param_user_str.dispersion_type
 		case 1 % eq [6] (MACQ)
 			aif_dispersion_vessel = calculate_aif_vessel_no_dispersion(t); % calculate dispersion effect of AIF
 		otherwise

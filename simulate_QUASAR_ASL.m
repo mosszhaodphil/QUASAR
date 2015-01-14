@@ -27,32 +27,32 @@ file_type_txt        = '.txt'; % text file extension
 file_type_nifty      = '.nii.gz'; % nifty file extension
 
 % Simulate QUASAR (Tissue) ASL signal and save it to file
-quasar_asl_signal        = zeros(length(t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
-quasar_asl_signal        = calculate_QUASAR_ASL_signal(t); % calculate QUASAR ASL signal
+quasar_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
+quasar_asl_signal        = calculate_QUASAR_ASL_signal(param_user_str.t); % calculate QUASAR ASL signal
 quasar_nifty_file_handle = make_nifty_file(quasar_asl_signal); % make nifty file from QUASAR ASL signal
-quasar_asl_figure_handle = plot_quasar_signal(quasar_asl_signal, t); % plot the signal over time
+quasar_asl_figure_handle = plot_quasar_signal(quasar_asl_signal, param_user_str.t); % plot the signal over time
 
 % Simulate Blood ASL signal and save it to file
-blood_asl_signal        = zeros(length(t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
-blood_asl_signal        = calculate_delta_M_blood(t); % calculate Blood ASL signal
+blood_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
+blood_asl_signal        = calculate_delta_M_blood(param_user_str.t); % calculate Blood ASL signal
 blood_nifty_file_handle = make_nifty_file(blood_asl_signal); % make nifty file from Blood ASL signal
-blood_asl_figure_handle = plot_blood_signal(blood_asl_signal, t); % plot the signal over time
+blood_asl_figure_handle = plot_blood_signal(blood_asl_signal, param_user_str.t); % plot the signal over time
 
 % Simulate crushed ASL signal and save it to file
-crushed_asl_signal        = zeros(length(t), 1); % construct a vector to store Crushed ASL signals at different sampling points specified by variable t
-crushed_asl_signal        = calculate_delta_M_crush(t); % calculate Crushed ASL signal
+crushed_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Crushed ASL signals at different sampling points specified by variable t
+crushed_asl_signal        = calculate_delta_M_crush(param_user_str.t); % calculate Crushed ASL signal
 crushed_nifty_file_handle = make_nifty_file(crushed_asl_signal); % make nifty file from Crushed ASL signal
-crushed_asl_figure_handle = plot_crushed_signal(crushed_asl_signal, t); % plot the signal over time
+crushed_asl_figure_handle = plot_crushed_signal(crushed_asl_signal, param_user_str.t); % plot the signal over time
 
 % Simulate noncrushed ASL signal and save it to file
-noncrushed_asl_signal        = zeros(length(t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
-noncrushed_asl_signal        = calculate_delta_M_noncrush(t); % calculate Noncrushed ASL signal
+noncrushed_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
+noncrushed_asl_signal        = calculate_delta_M_noncrush(param_user_str.t); % calculate Noncrushed ASL signal
 noncrushed_nifty_file_handle = make_nifty_file(noncrushed_asl_signal); % make nifty file from Noncrushed ASL signal
-noncrushed_asl_figure_handle = plot_noncrushed_signal(noncrushed_asl_signal, t); % plot the signal over time
+noncrushed_asl_figure_handle = plot_noncrushed_signal(noncrushed_asl_signal, param_user_str.t); % plot the signal over time
 
 
 % Plot summary curve (4x4) of four signals
-summary_figure_handle = subplot_signal([quasar_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], t);
+summary_figure_handle = subplot_signal([quasar_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
 
 % Save simulated ASL data file in the new directory
 mkdir(dir_name);
