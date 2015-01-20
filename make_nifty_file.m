@@ -19,14 +19,14 @@ function nifty_file_handle = make_nifty_file(asl_signal)
 	% x and y are dimension of k space
 	% z is the number of slices
 	% t is the total number of sampling points
-	nifty_file_handle.hdr.dime.dim(2 : 5) = [param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(param_user_str.t)];
+	nifty_file_handle.hdr.dime.dim(2 : 5) = [param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(asl_signal)];
 
 	% set max and min display intensity in the same range of signal intensity
 	nifty_file_handle.hdr.dime.cal_max = max(asl_signal);
 	nifty_file_handle.hdr.dime.cal_min = min(asl_signal);
 
 	% create an empty matrix based on dimension in header
-	asl_signal_matrix = zeros(param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(param_user_str.t));
+	asl_signal_matrix = zeros(param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(asl_signal));
 
 	% we assign asl_signal to be the element at middle of first slice
 	asl_signal_matrix(param_mr_str.m / 2, param_mr_str.m / 2, 1, :) = asl_signal;
