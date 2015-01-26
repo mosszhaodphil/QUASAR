@@ -41,6 +41,8 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	convolution_result = calculate_convolution_asl(input_function, residue_product);
 
 	% calculate ASL signal
-	delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * convolution_result;
+	% delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * convolution_result;
+	delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * input_function_matrix * residue_product;
+
 end
 
