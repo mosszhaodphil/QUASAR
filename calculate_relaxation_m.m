@@ -16,8 +16,11 @@ function relaxation_m = calculate_relaxation_m(t)
 	relaxation_m = zeros(length(t), 1); % create zero vector for relaxation function values
 
 	for j = 1 : length(t)
+		% Calculate effective T1 of tissue with eq [10] of (MACQ)
+		t1_t_eff = correct_t1t_look_locker(t(j));
 
-		relaxation_m(j) = exp((-(t(j))) / param_user_str.t1_t);
+		%relaxation_m(j) = exp((-(t(j))) / param_user_str.t1_t);
+		relaxation_m(j) = exp((-(t(j))) / t1_t_eff);
 
 	end % end for loop
 
