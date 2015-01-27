@@ -9,7 +9,7 @@
 function figure_handle = subplot_signal(signal_matrix, t)
 
 	figure('visible','off'); % not display the figure during drawing
-	y_axis_range = [0 0.025]; % Y axis range of plots
+	y_axis_range = [0 0.006]; % Y axis range of plots
 
 	% Plot QUASAR (Tissue) Curve
 	subplot(2, 2, 1);
