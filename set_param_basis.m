@@ -7,7 +7,7 @@ function [] = set_param_basis()
 
 	% Variables
 	% MRI scan variables
-	param_mr_str = struct;
+	param_mr_str             = struct;
 	param_mr_str.n_slices    = 7; % total number of slices (ETP)
 	param_mr_str.n_scans     = 40; % 40 control/label scan pairs (ETP)
 	param_mr_str.n_acq       = 18; % number of acquisition time points (ETP)
@@ -15,6 +15,8 @@ function [] = set_param_basis()
 	param_mr_str.m           = 64; % dimension of matrix 64x64 (ETP)
 	param_mr_str.fov         = 240; % field of view 240mm (ETP)
 	param_mr_str.flip_angle  = 2 * pi / 360 * 30; % flip angle of 30 degrees (ETP)
+	param_mr_str.g           = 1; % g value derived from saturation recovery of ASL control images (MACQ)
+	param_mr_str.delta_g     = 0.023; % delta_g factor to correct flip angle (personal communication with Petersen) (MACQ)
 	param_mr_str.tr          = 4; % repitition time 4000ms (ETP)
 	param_mr_str.te          = 0.023; % echo time 23ms (ETP)
 	param_mr_str.ti1         = 0.05; % TI1 or labeling delay of 50ms, figre 2 (ETP)
