@@ -106,6 +106,10 @@ handles.crushed_asl_signal = calculate_delta_M_crush(param_user_str.t); % calcul
 handles.noncrushed_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Noncrushed ASL signals at different sampling points specified by variable t
 handles.noncrushed_asl_signal = calculate_delta_M_noncrush(param_user_str.t); % calculate Noncrushed ASL signal
 
+% Simulate AIF ASL signal and save it to file (This is not to be displayed)
+handles.aif_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store AIF ASL signals at different sampling points specified by variable t
+handles.aif_asl_signal = calculate_delivery_tissue_Buxton(param_user_str.t); % calculate AIF ASL signal
+
 % Plot four curves
 % Plot QUASAR (Tissue) signal curve on upper left
 plot_quasar_signal(handles.quasar_asl_signal, param_user_str.t, handles);
