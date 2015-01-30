@@ -11,8 +11,7 @@ function t1_t_eff = correct_t1t_look_locker(current_ti)
 	load('param_basis.mat');
 	load('param_user.mat');
 
-	fa = param_mr_str.flip_angle;
-	% fa = (g + delta_g) * fa_nom; currently not used
+	fa = correct_flip_angle(param_mr_str.flip_angle);
 
 	% Eq [10]
 	t1_t_eff = 1 / (1 / param_user_str.t1_t - log(cos(fa)) / param_mr_str.delta_ti);

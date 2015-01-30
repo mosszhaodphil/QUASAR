@@ -11,8 +11,7 @@ function t1_a_eff = correct_t1a_look_locker(current_ti)
 	load('param_basis.mat');
 	load('param_user.mat');
 
-	fa = param_mr_str.flip_angle;
-	% fa = (g + delta_g) * fa_nom; currently not used
+	fa = correct_flip_angle(param_mr_str.flip_angle);
 
 	% Eq [11]
 	if(current_ti < param_user_str.tau_m)
