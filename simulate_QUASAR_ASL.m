@@ -86,6 +86,9 @@ print(aif_asl_figure_handle, '-dpng', file_name_aif, '-r300'); % save noncrushed
 
 print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
+% Copy the default mask file to result direction
+copyfile('../mask.nii.gz', '.');
+
 % go back to working directory
 cd('../');
 
