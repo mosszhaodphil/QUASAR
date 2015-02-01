@@ -32,17 +32,15 @@ function delta_M_tissue = calculate_delta_M_tissue(t)
 	% calculate m(t)
 	magnetization_buxton = calculate_relaxation_m(t);
 
-	% calculate r(t) * m(t)
-	for j = 1 : length(t)
-		residue_product(j) = residue_buxton(j) * magnetization_buxton(j);
-	end
+	% calculate r(t) * m(t) element by element multiplication
+	residue_product = residue_buxton .* magnetization_buxton;
 
 	% calculate convolution (first length(t) number of elements)
-	convolution_result = calculate_convolution_asl(input_function, residue_product);
+	convolution_result = param_mr_str.delta_ti * input_function_matrix * residue_product;
 
 	% calculate ASL signal
 	% delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * convolution_result;
-	delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * param_mr_str.delta_ti * input_function_matrix * residue_product;
+	delta_M_tissue = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * convolution_result;
 
 end
 
