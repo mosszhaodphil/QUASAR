@@ -17,7 +17,7 @@ function [] = set_param_user(varargin)
 	param_user_str.t                     = 0.04 : 0.30 : 3.64; % sampling time pints, second variable must be equal to delta_ti
 	param_user_str.m_0a                  = 1; % equilibrium magnetization of arterial blood
 	param_user_str.inversion_efficiency  = 0.91; % inversion efficiency alpha, in postprocessing section of (ETP)
-	param_user_str.crush_efficiency      = 0.35; % percentage of arterial blood signal removed
+	param_user_str.crush_efficiency      = 0; % percentage of arterial blood signal remaining after applying crusher gradients
 
 	param_user_str.dispersion_type       = 1; % no dispersion
 
