@@ -90,9 +90,9 @@ load('param_basis.mat');
 load('param_user.mat');
 
 % Simulate signals and store the signals to handles structure
-% Simulate QUASAR (Tissue) signal
-handles.quasar_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
-handles.quasar_asl_signal = calculate_QUASAR_ASL_signal(param_user_str.t); % calculate QUASAR ASL signal
+% Simulate Tissue  signal
+handles.tissue_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
+handles.tissue_asl_signal = calculate_delta_M_tissue(param_user_str.t); % calculate QUASAR ASL signal
 
 % Simulate Blood ASL signal
 handles.blood_asl_signal = zeros(length(param_user_str.t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
@@ -112,7 +112,7 @@ handles.aif_asl_signal = calculate_delivery_tissue_Buxton(param_user_str.t); % c
 
 % Plot four curves
 % Plot QUASAR (Tissue) signal curve on upper left
-plot_quasar_signal(handles.quasar_asl_signal, param_user_str.t, handles);
+plot_tissue_signal(handles.tissue_asl_signal, param_user_str.t, handles);
 hold on;
 
 % Plot Blood signal curve on upper right
