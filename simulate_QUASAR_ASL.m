@@ -102,8 +102,11 @@ save_nii(tc_nifty_file_handle, strcat(file_name_tc, file_type_nifty));
 
 print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
-% Copy the default mask file to result direction
-copyfile('../mask.nii.gz', '.');
+% Copy the default files to result direction
+copyfile('../mask.nii.gz', '.'); % Copy mask file
+copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
+copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
+copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
 
 % go back to working directory
 cd('../');
