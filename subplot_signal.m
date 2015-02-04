@@ -17,7 +17,7 @@ function figure_handle = subplot_signal(signal_matrix, t)
 	ylim(y_axis_range);
 	xlabel('Time(sec)');
 	ylabel('Signal');
-	title('QUASAR (Tissue) signal');
+	title('Tissue signal');
 	grid on;
 	hold on;
 
