@@ -1,4 +1,4 @@
-% This program simulate QUASAR ASL data from a set of user parameters in param_user.m
+% This program simulate tissue ASL data from a set of user parameters in param_user.m
 % The output is a saved in the folder output_yyyymmdd_HHMMSS under the same directory
 
 close all;
@@ -19,7 +19,7 @@ date_time_now    = clock; % get vector of current time
 date_time        = datestr(date_time_now, date_time_format); % convert current time vector to string
 dir_name         = strcat('output_', date_time); % Default directory name
 
-file_name_quasar     = 'signal_quasar'; % file name to save QUASAR (Tissue) ASL signal
+file_name_tissue     = 'signal_tissue'; % file name to save Tissue ASL signal
 file_name_blood      = 'signal_blood'; % file name to save Blood ASL signal
 file_name_crushed    = 'signal_crushed'; % file name to save crushed ASL signal
 file_name_noncrushed = 'signal_noncrushed'; % file name to save noncrushed ASL signal
@@ -30,12 +30,12 @@ file_type_nifty      = '.nii.gz'; % nifty file extension
 
 position = [32 32 1]; % position on 4D matrix to assgin time series signal
 
-% Simulate QUASAR (Tissue) ASL signal and save it to file
-quasar_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store QUASAR ASL signals at different sampling points specified by variable t
-quasar_asl_signal        = calculate_QUASAR_ASL_signal(param_user_str.t); % calculate QUASAR ASL signal
-quasar_asl_matrix		 = make_4D_matrix(quasar_asl_signal, position); % make 4D matrix to save QUASAR ASL signal
-quasar_nifty_file_handle = make_nifty_file(quasar_asl_matrix); % make nifty file from QUASAR ASL signal
-quasar_asl_figure_handle = plot_quasar_signal(quasar_asl_signal, param_user_str.t); % plot the signal over time
+% Simulate Tisue ASL signal and save it to file
+tissue_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Tissue ASL signals at different sampling points specified by variable t
+tissue_asl_signal        = calculate_delta_M_tissue(param_user_str.t); % calculate Tissue ASL signal
+tissue_asl_matrix		 = make_4D_matrix(tissue_asl_signal, position); % make 4D matrix to save Tissue ASL signal
+tissue_nifty_file_handle = make_nifty_file(tissue_asl_matrix); % make nifty file from Tissue ASL signal
+tissue_asl_figure_handle = plot_tissue_signal(tissue_asl_signal, param_user_str.t); % plot the signal over time
 
 % Simulate Blood ASL signal and save it to file
 blood_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Blood ASL signals at different sampling points specified by variable t
@@ -71,15 +71,15 @@ tc_asl_matrix      = make_raw_QUASAR_matrix(crushed_asl_matrix, noncrushed_asl_m
 tc_nifty_file_handle = make_nifty_file(tc_asl_matrix);  % Save raw ASL matrix in nifty file
 
 % Plot summary curve (4x4) of four signals
-summary_figure_handle = subplot_signal([quasar_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
+summary_figure_handle = subplot_signal([tissue_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
 
 % Save simulated ASL data file in the new directory
 mkdir(dir_name);
 cd(dir_name);
 
-dlmwrite(strcat(file_name_quasar, file_type_txt), quasar_asl_signal); % save QUASAR ASL data to a text file
-save_nii(quasar_nifty_file_handle, strcat(file_name_quasar, file_type_nifty)); % save QUASAR ASL nifty file
-print(quasar_asl_figure_handle, '-dpng', file_name_quasar, '-r300'); % save QUASAR ASL signal time series figure
+dlmwrite(strcat(file_name_tissue, file_type_txt), tissue_asl_signal); % save tissue ASL data to a text file
+save_nii(tissue_nifty_file_handle, strcat(file_name_tissue, file_type_nifty)); % save tissue ASL nifty file
+print(tissue_asl_figure_handle, '-dpng', file_name_tissue, '-r300'); % save tissue ASL signal time series figure
 
 dlmwrite(strcat(file_name_blood, file_type_txt), blood_asl_signal); % save blood ASL data to a text file
 save_nii(blood_nifty_file_handle, strcat(file_name_blood, file_type_nifty)); % save blood ASL nifty file
