@@ -67,7 +67,7 @@ aif_asl_figure_handle = plot_aif_signal(aif_asl_signal, param_user_str.t); % plo
 
 % Make a raw ASL matrix from crushed and noncrushed signals
 % This is equivelant to Label(Tag) minus Control (tc) of raw ASL signal
-tc_asl_matrix      = make_raw_QUASAR_matrix(crushed_asl_matrix, noncrushed_asl_matrix);
+tc_asl_matrix        = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl_matrix);
 tc_nifty_file_handle = make_nifty_file(tc_asl_matrix);  % Save raw ASL matrix in nifty file
 
 % Plot summary curve (4x4) of four signals
