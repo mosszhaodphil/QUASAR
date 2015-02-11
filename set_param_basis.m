@@ -15,6 +15,15 @@ function [] = set_param_basis()
 	param_mr_str.m           = 64; % dimension of matrix 64x64 (ETP)
 	param_mr_str.fov         = 240; % field of view 240mm (ETP)
 	param_mr_str.flip_angle  = 2 * pi / 360 * 30; % flip angle of 30 degrees (ETP)
+	param_mr_str.phi         = 2 * pi / 360 * 30; % angle (30 degrees) blood flow suppression used in polar coordinate, exact value not matters (MACQ)
+	param_mr_str.theta       = 2 * pi / 360 * 60; % angle (60 degrees) blood flow suppression used in polar coordinate, exact value not matters (MACQ)
+	param_mr_str.radius      = 1 / sqrt(3); % radius of blood flow suppression used in polar coordinate (MACQ) paper should NOT be 1/3
+	param_mr_str.s           = [ param_mr_str.radius  param_mr_str.radius param_mr_str.radius; 
+								-param_mr_str.radius  param_mr_str.radius param_mr_str.radius;
+								 0                    0                   0                  ; 
+								 param_mr_str.radius -param_mr_str.radius param_mr_str.radius;
+								-param_mr_str.radius -param_mr_str.radius param_mr_str.radius;
+								 0                    0                   0                  ;]'; 
 	param_mr_str.g           = 1; % g value derived from saturation recovery of ASL control images (MACQ)
 	param_mr_str.delta_g     = 0.023; % delta_g factor to correct flip angle (personal communication with Petersen) (MACQ)
 	param_mr_str.tr          = 4; % repitition time 4000ms (ETP)
