@@ -8,7 +8,7 @@ function [] = set_param_user(varargin)
 	% Default variables
 	% User input variables
 	param_user_str                       = struct;
-	param_user_str.f                     = 100 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
+	param_user_str.f                     = 80 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
 	param_user_str.arterial_blood_volume = 1.5 / 100; % arterial blood volume in percentage
 	param_user_str.tau_t                 = 1.2; % Bolus arrival time to tissue (microvasculature)
 	param_user_str.tau_m                 = 1; % Bolus arrival time to vasculature
