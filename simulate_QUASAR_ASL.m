@@ -73,6 +73,9 @@ tc_nifty_file_handle = make_nifty_file(tc_asl_matrix);  % Save raw ASL matrix in
 % Plot summary curve (4x4) of four signals
 summary_figure_handle = subplot_signal([tissue_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
 
+% save parameters of current simulation
+save_parameters();
+
 % Save simulated ASL data file in the new directory
 mkdir(dir_name);
 cd(dir_name);
@@ -102,11 +105,14 @@ save_nii(tc_nifty_file_handle, strcat(file_name_tc, file_type_nifty));
 
 print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
-% Copy the default files to result direction
+% Copy the default files to result directory
 copyfile('../mask.nii.gz', '.'); % Copy mask file
 copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
 copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
 copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
+
+% Move parameter file to result directory
+movefile('../parameters.txt', '.');
 
 % go back to working directory
 cd('../');
