@@ -22,5 +22,9 @@ function t1_a_eff = correct_t1a_look_locker(current_ti)
 
 	end
 
+	% save corrected T1 arterial blood to user parameter file
+	param_user_str.t1_a_correct = t1_a_eff;
+	save('param_user.mat', 'param_user_str')
+
 end
 

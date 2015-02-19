@@ -16,5 +16,9 @@ function t1_t_eff = correct_t1t_look_locker(current_ti)
 	% Eq [10]
 	t1_t_eff = 1 / (1 / param_user_str.t1_t - log(cos(fa)) / param_mr_str.delta_ti);
 
+	% save corrected T1 tissue to user parameter file
+	param_user_str.t1_t_correct = t1_t_eff;
+	save('param_user.mat', 'param_user_str');
+
 end
 
