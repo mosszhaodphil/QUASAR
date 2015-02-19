@@ -21,6 +21,8 @@ function [] = save_parameters()
 	fprintf(file_handle, 'Bolus Arrival Time Arterial Blood: %.2f \n', param_user_str.tau_m);
 	fprintf(file_handle, 'T1 Tissue: %.2f \n', param_user_str.t1_t);
 	fprintf(file_handle, 'T1 Arterial Blood: %.2f \n', param_user_str.t1_a);
+	fprintf(file_handle, 'T1 Tissue Corrected (Look-Locker): %.2f \n', param_user_str.t1_t_correct);
+	fprintf(file_handle, 'T1 Arterial Blood Corrected (Look-Locker): %.2f \n', param_user_str.t1_a_correct);
 	fprintf(file_handle, 'M0 Arterial blood: %.2f \n', param_user_str.m_0a);
 	fprintf(file_handle, 'Inversion efficiency: %.2f \n', param_user_str.inversion_efficiency);
 	fprintf(file_handle, 'Blood tissue partition coefficient: %.2f \n', param_mr_str.lamda);
