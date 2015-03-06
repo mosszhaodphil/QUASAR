@@ -14,7 +14,11 @@ function delivery_Buxton = calculate_delivery_Buxton(t)
 
 	% calculate deliver function c(t), eq [5] (MACQ)
 	for j = 1 : length(t)
-		delivery_Buxton(j) = exp((-t(j)) / param_user_str.t1_a);
+		% Calculate effective T1 of arterial blood with eq [11] of (MACQ)
+		t1_a_eff = correct_t1a_look_locker(t(j));
+
+		%delivery_Buxton(j) = exp((-t(j)) / param_user_str.t1_a);
+		delivery_Buxton(j) = exp((-t(j)) / t1_a_eff);
 	end
 
 end

@@ -1,37 +1,29 @@
-% This function makes a nifty file from a vector of QUASAR ASL signal
+% This function makes a nifty file from a 4D of QUASAR ASL signal matrix
 % First, a dummy nifty file is loaded
 % Secondly, we edit the header of this dummy file
 % Thirdly, we copy the content of asl_signal to the signal matrix in dummy file
 % Finally, we package the file and return its file handle
-% asl_signal is a vector of delta_M QUASAR signal
 
-function nifty_file_handle = make_nifty_file(asl_signal)
-
-	% Load parameters
-	load('param_basis.mat');
-	load('param_user.mat');
+function nifty_file_handle = make_nifty_file(signal_4D_matrix)
 
 	% load dummy nifty file
 	nifty_file_handle = load_nii('dummy.nii.gz');
+
+	% get the dimension of input matrix
+	[x, y, z, t] = size(signal_4D_matrix);
 
 	% modify nifty file header
 	% set dimension of 4D nifty matrix
 	% x and y are dimension of k space
 	% z is the number of slices
 	% t is the total number of sampling points
-	nifty_file_handle.hdr.dime.dim(2 : 5) = [param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(asl_signal)];
+	nifty_file_handle.hdr.dime.dim(2 : 5) = [x, y, z, t];
 
 	% set max and min display intensity in the same range of signal intensity
-	nifty_file_handle.hdr.dime.cal_max = max(asl_signal);
-	nifty_file_handle.hdr.dime.cal_min = min(asl_signal);
-
-	% create an empty matrix based on dimension in header
-	asl_signal_matrix = zeros(param_mr_str.m, param_mr_str.m, param_mr_str.n_slices, length(asl_signal));
-
-	% we assign asl_signal to be the element at middle of first slice
-	asl_signal_matrix(param_mr_str.m / 2, param_mr_str.m / 2, 1, :) = asl_signal;
+	nifty_file_handle.hdr.dime.cal_max = max(signal_4D_matrix(:));
+	nifty_file_handle.hdr.dime.cal_min = min(signal_4D_matrix(:));
 
 	% assign signal matrix to nifty file
-	nifty_file_handle.img = asl_signal_matrix;
+	nifty_file_handle.img = signal_4D_matrix;
 
 end
