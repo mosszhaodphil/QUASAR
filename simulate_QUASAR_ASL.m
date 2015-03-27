@@ -2,7 +2,9 @@
 % The output is a saved in the folder output_yyyymmdd_HHMMSS under the same directory
 
 close all;
-clear all;
+%clear all;
+
+clear variables;
 
 % Program begins
 
@@ -23,8 +25,9 @@ file_name_tissue     = 'signal_tissue'; % file name to save Tissue ASL signal
 file_name_blood      = 'signal_blood'; % file name to save Blood ASL signal
 file_name_crushed    = 'signal_crushed'; % file name to save crushed ASL signal
 file_name_noncrushed = 'signal_noncrushed'; % file name to save noncrushed ASL signal
-file_name_aif 		 = 'signal_aif'; % file name to save arterial input function (AIF) signal
-file_name_tc		 = 'signal_tc'; % file name to save raw ASl (Tag minus control tc) signal
+file_name_aif        = 'signal_aif'; % file name to save arterial input function (AIF) signal
+file_name_tc         = 'signal_tc'; % file name to save raw ASl (Tag minus control tc) signal
+file_name_tc_noise   = 'signal_tc_noise';
 file_type_txt        = '.txt'; % text file extension
 file_type_nifty      = '.nii.gz'; % nifty file extension
 
@@ -70,6 +73,14 @@ aif_asl_figure_handle = plot_aif_signal(aif_asl_signal, param_user_str.t); % plo
 tc_asl_matrix        = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl_matrix);
 tc_nifty_file_handle = make_nifty_file(tc_asl_matrix);  % Save raw ASL matrix in nifty file
 
+% Add noise
+tissue_asl_noise_signal = add_white_noise(tissue_asl_signal, param_user_str.snr);
+tissue_asl_noise_matrix = make_4D_matrix(tissue_asl_noise_signal, position);
+blood_asl_noise_signal  = add_white_noise(blood_asl_signal, param_user_str.snr);
+blood_asl_noise_matrix  = make_4D_matrix(blood_asl_noise_signal, position);
+tc_asl_noise_matrix        = make_raw_QUASAR_matrix(tissue_asl_noise_matrix, blood_asl_noise_matrix);
+tc_noise_nifty_file_handle = make_nifty_file(tc_asl_noise_matrix);  % Save raw ASL matrix in nifty file
+
 % Plot summary curve (4x4) of four signals
 summary_figure_handle = subplot_signal([tissue_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
 
@@ -102,6 +113,8 @@ print(aif_asl_figure_handle, '-dpng', file_name_aif, '-r300'); % save noncrushed
 
 % Save raw ASL tc file
 save_nii(tc_nifty_file_handle, strcat(file_name_tc, file_type_nifty));
+
+save_nii(tc_noise_nifty_file_handle, strcat(file_name_tc_noise, file_type_nifty))
 
 print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
