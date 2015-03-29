@@ -36,6 +36,7 @@ function [] = save_parameters()
 	fprintf(file_handle, 'delta_g: %.4f \n', param_mr_str.delta_g);
 
 	fprintf(file_handle, '\n');
+	fprintf(file_handle, 'SNR: %d\n', param_user_str.snr);
 	fprintf(file_handle, 'Delta TI: %.2f \n', param_mr_str.delta_ti);
 	fprintf(file_handle, 'Inversion Time (TI): %.2f \n', param_user_str.t);
 

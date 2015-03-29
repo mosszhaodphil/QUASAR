@@ -8,15 +8,16 @@ function [] = set_param_user(varargin)
 	% Default variables
 	% User input variables
 	param_user_str                       = struct;
-	param_user_str.f                     = 80 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
-	param_user_str.arterial_blood_volume = 1.5 / 100; % arterial blood volume in percentage
-	param_user_str.tau_t                 = 1.2; % Bolus arrival time to tissue (microvasculature)
-	param_user_str.tau_m                 = 1; % Bolus arrival time to vasculature
+	param_user_str.f                     = 100 / 6000; % CBF need to convert from ml/100ml/min to ml/g/s
+	param_user_str.arterial_blood_volume = 0 / 100; % arterial blood volume in percentage
+	param_user_str.tau_t                 = 0.2; % Bolus arrival time to tissue (microvasculature)
+	param_user_str.tau_m                 = 0; % Bolus arrival time to vasculature
 	param_user_str.t1_t                  = 1.3; % T1 relaxation of tissue
 	param_user_str.t1_a                  = 1.6; % T1 relaxation of arterial blood, in postprocessing section of (ETP)
 	param_user_str.t                     = 0.04 : 0.30 : 3.64; % sampling time pints, second variable must be equal to delta_ti
 	param_user_str.m_0a                  = 1; % equilibrium magnetization of arterial blood
 	param_user_str.inversion_efficiency  = 0.91; % inversion efficiency alpha, in postprocessing section of (ETP)
+	param_user_str.snr					 = 10; % signal to noise ratio
 	param_user_str.crush_efficiency      = 0; % percentage of arterial blood signal remaining after applying crusher gradients
 
 	param_user_str.dispersion_type       = 1; % no dispersion
