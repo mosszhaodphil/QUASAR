@@ -15,6 +15,14 @@ function matrix_4D = make_4D_matrix(input_vector, position)
 	matrix_4D = zeros(param_mr_str.m, param_mr_str.m, param_mr_str.n_slices ,length(input_vector));
 
 	% assign the timeseries signal to specified position
-	matrix_4D(position(1), position(2), position(3), :) = input_vector;
+	% matrix_4D(position(1), position(2), position(3), :) = input_vector;
+
+	for i = 1 : param_mr_str.m
+		for j = 1 : param_mr_str.m
+			for k = 1 : param_mr_str.n_slices
+				matrix_4D(i, j, k, :) = input_vector;
+			end
+		end
+	end
 
 end
