@@ -79,12 +79,16 @@ tc_asl_matrix        = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl_matri
 tc_nifty_file_handle = make_nifty_file(tc_asl_matrix);  % Save raw ASL matrix in nifty file
 
 % Add noise
-tissue_asl_noise_signal = add_white_noise(tissue_asl_signal, param_user_str.snr);
-tissue_asl_noise_matrix = make_4D_matrix(tissue_asl_noise_signal, position);
-blood_asl_noise_signal  = add_white_noise(blood_asl_signal, param_user_str.snr);
-blood_asl_noise_matrix  = make_4D_matrix(blood_asl_noise_signal, position);
-tc_asl_noise_matrix        = make_raw_QUASAR_matrix(tissue_asl_noise_matrix, blood_asl_noise_matrix);
-tc_noise_nifty_file_handle = make_nifty_file(tc_asl_noise_matrix);  % Save raw ASL matrix in nifty file
+% tissue_asl_noise_signal    = add_white_noise(tissue_asl_signal, param_user_str.snr);
+% tissue_asl_noise_matrix    = make_4D_matrix(tissue_asl_noise_signal, position);
+% blood_asl_noise_signal     = add_white_noise(blood_asl_signal, param_user_str.snr);
+% blood_asl_noise_matrix     = make_4D_matrix(blood_asl_noise_signal, position);
+% tc_asl_noise_matrix        = make_raw_QUASAR_matrix(tissue_asl_noise_matrix, blood_asl_noise_matrix);
+% tc_noise_nifty_file_handle = make_nifty_file(tc_asl_noise_matrix);  % Save raw ASL matrix in nifty file
+
+% Add noise
+tc_asl_noise_matrix = add_white_noise(tc_asl_matrix, param_user_str.snr);
+tc_noise_nifty_file_handle = make_nifty_file(tc_asl_noise_matrix);
 
 % Plot summary curve (4x4) of four signals
 summary_figure_handle = subplot_signal([tissue_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
