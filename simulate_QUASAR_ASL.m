@@ -21,6 +21,7 @@ date_time_now    = clock; % get vector of current time
 date_time        = datestr(date_time_now, date_time_format); % convert current time vector to string
 dir_name         = strcat('output_', date_time); % Default directory name
 
+file_name_mask       = 'mask_quasar'; % file name to save mask
 file_name_tissue     = 'signal_tissue'; % file name to save Tissue ASL signal
 file_name_blood      = 'signal_blood'; % file name to save Blood ASL signal
 file_name_crushed    = 'signal_crushed'; % file name to save crushed ASL signal
@@ -32,6 +33,10 @@ file_type_txt        = '.txt'; % text file extension
 file_type_nifty      = '.nii.gz'; % nifty file extension
 
 position = [32 32 1]; % position on 4D matrix to assgin time series signal
+
+% Make mask file
+mask_matrix            = make_mask_matrix(param_mr_str.m, param_mr_str.m, param_mr_str.n_slices); % construct mask matrix
+mask_nifty_file_handle = make_nifty_file(mask_matrix);
 
 % Simulate Tisue ASL signal and save it to file
 tissue_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Tissue ASL signals at different sampling points specified by variable t
@@ -91,6 +96,8 @@ save_parameters();
 mkdir(dir_name);
 cd(dir_name);
 
+save_nii(mask_nifty_file_handle, strcat(file_name_mask, file_type_nifty)); % save mask nifty file
+
 dlmwrite(strcat(file_name_tissue, file_type_txt), tissue_asl_signal); % save tissue ASL data to a text file
 save_nii(tissue_nifty_file_handle, strcat(file_name_tissue, file_type_nifty)); % save tissue ASL nifty file
 print(tissue_asl_figure_handle, '-dpng', file_name_tissue, '-r300'); % save tissue ASL signal time series figure
@@ -119,7 +126,7 @@ save_nii(tc_noise_nifty_file_handle, strcat(file_name_tc_noise, file_type_nifty)
 print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
 % Copy the default files to result directory
-copyfile('../mask.nii.gz', '.'); % Copy mask file
+%copyfile('../mask.nii.gz', '.'); % Copy mask file
 copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
 copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
 copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
