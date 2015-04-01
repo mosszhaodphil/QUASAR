@@ -21,7 +21,7 @@ date_time_now    = clock; % get vector of current time
 date_time        = datestr(date_time_now, date_time_format); % convert current time vector to string
 dir_name         = strcat('output_', date_time); % Default directory name
 
-file_name_mask       = 'mask_quasar'; % file name to save mask
+file_name_mask       = 'mask'; % file name to save mask
 file_name_tissue     = 'signal_tissue'; % file name to save Tissue ASL signal
 file_name_blood      = 'signal_blood'; % file name to save Blood ASL signal
 file_name_crushed    = 'signal_crushed'; % file name to save crushed ASL signal
@@ -134,6 +134,7 @@ print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signa
 copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
 copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
 copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
+copyfile('../aifoptions.txt', '.'); % Copy parameters options file for model free analysis to estimate AIF
 
 % Move parameter file to result directory
 movefile('../parameters.txt', '.');
