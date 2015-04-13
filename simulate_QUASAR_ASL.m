@@ -31,7 +31,7 @@ file_name_tc_noise   = 'signal_tc_noise';
 file_type_txt        = '.txt'; % text file extension
 file_type_nifty      = '.nii.gz'; % nifty file extension
 
-position = [32 32 1]; % position on 4D matrix to assgin time series signal
+position = [1 1 1]; % position on 4D matrix to assgin time series signal
 
 % Simulate Tisue ASL signal and save it to file
 tissue_asl_signal        = zeros(length(param_user_str.t), 1); % construct a vector to store Tissue ASL signals at different sampling points specified by variable t
