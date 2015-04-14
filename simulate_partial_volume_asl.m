@@ -11,8 +11,8 @@ function pv_matrix = simulate_partial_volume_asl(file_asl_gm, file_asl_wm, file_
 
 
 	file_extension = '.nii.gz';
-	file_pv        = 'pv_asl';
-	file_pv_noise  = 'pv_asl_noise';
+	file_pv        = 'pv_asltissue';
+	file_pv_noise  = 'pv_asltissue_noise';
 
 	snr = 10;
 
