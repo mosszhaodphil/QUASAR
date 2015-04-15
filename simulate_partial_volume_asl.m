@@ -5,7 +5,8 @@
 % file_pv_gm: GM partial volume map nifty file
 % file_pv_wm: WM partial volume map nifty file
 % Output:
-% Partial volume ASL signal
+% 1 Partial volume ASL signal
+% 2 Partial volume ASL signal with noise
 
 function pv_matrix = simulate_partial_volume_asl(file_asl_gm, file_asl_wm, file_pv_gm, file_pv_wm)
 
@@ -15,6 +16,12 @@ function pv_matrix = simulate_partial_volume_asl(file_asl_gm, file_asl_wm, file_
 	file_pv_noise  = 'pv_asltissue_noise';
 
 	snr = 10;
+
+	% Reoriente input files
+	reoriente_nifty_file(file_asl_gm);
+	reoriente_nifty_file(file_asl_wm);
+	reoriente_nifty_file(file_pv_gm);
+	reoriente_nifty_file(file_pv_wm);
 
 	% Load files
 	asl_gm_handle = load_nii(strcat(file_asl_gm, file_extension));
@@ -58,6 +65,7 @@ function pv_matrix = simulate_partial_volume_asl(file_asl_gm, file_asl_wm, file_
 	% Save pv_matrix to a nifty file
 	pv_handle       = make_nifty_file(pv_matrix);
 	pv_noise_handle = make_nifty_file(pv_noise_matrix);
+
 	save_nii(pv_handle, strcat(file_pv, file_extension));
 	save_nii(pv_noise_handle, strcat(file_pv_noise, file_extension));
 
