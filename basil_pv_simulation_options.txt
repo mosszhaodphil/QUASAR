@@ -1,6 +1,10 @@
 # Sequence/scanner parameters
---t1=1.3
---t1b=1.6
+# GM T1 should be the Look-locker corrected value of 1.3s
+--t1=0.79
+# WM T1 should be the Look-locker corrected value of 1.1s
+--t1wm=0.71
+# T1 blood shoudl be the Look-locker corrected value of 1.6s
+-—t1b=0.89
 --tau=0.64
 
 # Data information
