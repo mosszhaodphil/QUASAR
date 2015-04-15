@@ -1,0 +1,231 @@
+Logfile started: output/step1/logfile
+Start time: Wed Apr 15 10:05:07 2015
+FABBER release v2.0 
+Command line and effective options:
+fabber
+--output='output/step1'
+--allow-bad-voxels
+--data='pv_asltissue'
+--data-order='singlefile'
+--image-prior5='pvgm'
+--image-prior6='pvwm'
+--inferwm
+--mask='mask'
+--max-iterations='200'
+--method='spatialvb'
+--model='aslpvc'
+--noise='white'
+--param-spatial-priors='MNMNII'
+--repeats='1'
+--save-model-fit
+--t1='0.79'
+--t1b='0.89'
+--t1wm='0.71'
+--tau='0.64'
+--ti1='0.04'
+--ti10='2.74'
+--ti11='3.04'
+--ti12='3.34'
+--ti13='3.64'
+--ti2='0.34'
+--ti3='0.64'
+--ti4='0.94'
+--ti5='1.24'
+--ti6='1.54'
+--ti7='1.84'
+--ti8='2.14'
+--ti9='2.44'
+--usepve
+--wmardoff
+--------------------
+Inference using development model
+    Data parameters: #repeats = 1, t1 = 0.79, t1b = 0.89, bolus length (tau) = 0.64
+ARD subsystem is enabled
+Infertting on tissue component 
+ARD has been set on arterial compartment 
+Inferring on white matter component
+TIs: 0.04 0.34 0.64 0.94 1.24 1.54 1.84 2.14 2.44 2.74 3.04 3.34 3.64 
+    Forward Model version:
+      $Id: fwdmodel_asl_pvc.cc,v 1.6 2013/09/03 15:08:04 chappell Exp $
+Pattern of phis used is [ 1 ]
+Using --allow-bad-voxels: numerical errors in a voxel will
+simply stop the calculation of that voxel.
+Check log for 'Going on to the next voxel' messages.
+Note that you should get very few (if any) exceptions like this;they are probably due to bugs or a numerically unstable model.Expanded, --param-spatial-priors=MNMNII
+    Loading mask data from 'mask'
+Dimensions: x=64, y=64, z=7, vols=1
+Voxel size: x=3.74219mm, y=3.73947mm, z=7.70534mm, TR=1 sec
+Intents: 0, 0, 0, 0
+  Loading all data from a single file...
+    Loading data from 'pv_asltissue'
+Dimensions: x=64, y=64, z=7, vols=13
+Voxel size: x=3.74219mm, y=3.73947mm, z=7.70534mm, TR=0.304308 sec
+Intents: 0, 0, 0, 0
+    Applying mask to data...
+WARNING ONCE: Not saving finalSpatialPriors.nii.gz -- too huge!!
+Using initial value for all deltas: 0.5
+Reading Image prior (5): pvgm
+Reading Image prior (6): pvwm
+Starting iteration 1 of 200
+
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 1e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 1e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+WARNING ONCE: Cache is disabled to avoid memory problems!
+Pattern of phis used is [ 1 1 1 1 1 1 1 1 1 1 1 1 1 ]
+Starting iteration 2 of 200
+
+New akmean: 0.000000 1.800177 0.000000 1.800175 6.349328 5.674855 
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 2.33107e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 1.32909e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Starting iteration 3 of 200
+
+New akmean: 0.000000 1.800176 0.000000 1.800179 6.349328 5.674855 
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 3.59951e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 2.07899e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Starting iteration 4 of 200
+
+New akmean: 0.000000 1.800174 0.000000 1.800174 6.351780 5.676219 
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 7.68028e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 4.25944e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Starting iteration 5 of 200
+
+New akmean: 0.000000 1.800173 0.000000 1.800174 6.352138 5.676962 
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 1.34957e-07 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 7.93031e-08 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Starting iteration 6 of 200
+
+New akmean: 0.000000 1.800179 0.000000 1.802920 6.352195 5.677178 
+Optimizing for parameter 1
+
+SpatialPrior 1 type M : 3.17282e-07 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 2
+
+SpatialPrior 2 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 3
+
+SpatialPrior 3 type M : 1.79952e-07 0 0
+    delta(k) = -3, rho(k) == 1234.57
+Optimizing for parameter 4
+
+SpatialPrior 4 type N : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 5
+
+SpatialPrior 5 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
+Optimizing for parameter 6
+
+SpatialPrior 6 type I : 0 0 0
+    delta(k) = 0, rho(k) == 0
