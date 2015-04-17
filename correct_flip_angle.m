@@ -13,5 +13,9 @@ function flip_angle_correct = correct_flip_angle(flip_angle_nom)
 
 	flip_angle_correct = (param_mr_str.g + param_mr_str.delta_g) * flip_angle_nom; % eq[12]
 
+	% Save corrected flip angle
+	param_mr_str.flip_angle_correct = flip_angle_correct;
+	save('param_basis.mat', 'param_mr_str');
+
 end
 
