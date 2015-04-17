@@ -29,7 +29,8 @@ function [] = save_parameters()
 	
 	fprintf(file_handle, '\n');
 
-	fprintf(file_handle, 'Flip angle: %.2f \n', radtodeg(param_mr_str.flip_angle));
+	fprintf(file_handle, 'Flip angle norm: %.2f \n', radtodeg(param_mr_str.flip_angle));
+	fprintf(file_handle, 'Flip angle correct: %.2f \n', radtodeg(param_mr_str.flip_angle_correct));
 	fprintf(file_handle, 'Flow suppression angle phi: %.2f \n', radtodeg(param_mr_str.phi));
 	fprintf(file_handle, 'Flow suppression angle theta: %.2f \n', radtodeg(param_mr_str.theta));
 	fprintf(file_handle, 'g: %.2f \n', param_mr_str.g);
