@@ -107,7 +107,7 @@ dlmwrite(strcat(file_name_noncrushed, file_type_txt), noncrushed_asl_signal); % 
 save_nii(noncrushed_nifty_file_handle, strcat(file_name_noncrushed, file_type_nifty)); % save noncrushed ASL nifty file
 print(noncrushed_asl_figure_handle, '-dpng', file_name_noncrushed, '-r300'); % save noncrushed ASL signal time series figure
 
-dlmwrite(strcat(file_name_aif, file_type_txt), noncrushed_asl_signal); % save noncrushed ASL data to a text file
+dlmwrite(strcat(file_name_aif, file_type_txt), aif_asl_signal); % save noncrushed ASL data to a text file
 save_nii(aif_nifty_file_handle, strcat(file_name_aif, file_type_nifty)); % save noncrushed ASL nifty file
 print(aif_asl_figure_handle, '-dpng', file_name_aif, '-r300'); % save noncrushed ASL signal time series figure
 
