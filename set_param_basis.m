@@ -8,11 +8,11 @@ function [] = set_param_basis()
 	% Variables
 	% MRI scan variables
 	param_mr_str             = struct;
-	param_mr_str.n_slices    = 7; % total number of slices (ETP)
+	param_mr_str.n_slices    = 1; % total number of slices (ETP)
 	param_mr_str.n_scans     = 40; % 40 control/label scan pairs (ETP)
 	param_mr_str.n_acq       = 18; % number of acquisition time points (ETP)
 	param_mr_str.slide_gap   = 2; % slide gap of 2mm (ETP)
-	param_mr_str.m           = 64; % dimension of matrix 64x64 (ETP)
+	param_mr_str.m           = 1; % dimension of matrix 64x64 (ETP)
 	param_mr_str.fov         = 240; % field of view 240mm (ETP)
 	param_mr_str.flip_angle  = degtorad(30); % flip angle of 30 degrees of Look locker readout (ETP)
 	param_mr_str.phi         = 0.08168; % angle of blood flow of patient in polar coordinate, exact value not matters (MACQ)
