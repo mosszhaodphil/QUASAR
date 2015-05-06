@@ -176,10 +176,12 @@ save_nii(tc_pv_noise_nifty_file_handle, strcat(file_name_tc_pv_noise, file_type_
 %print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
 % Copy the default files to result directory
-copyfile('../mask.nii.gz', '.'); % Copy mask file
 copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
 copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
 copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
+copyfile(strcat('../', mask, file_type_nifty), '.');
+copyfile(strcat('../', pvgm, file_type_nifty), '.');
+copyfile(strcat('../', pvwm, file_type_nifty), '.');
 
 % Move parameter file to result directory
 movefile('../parameters.txt', '.');
