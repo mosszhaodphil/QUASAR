@@ -15,10 +15,7 @@ function flip_angle_correct = correct_flip_angle(flip_angle_nom)
 
 	% Save corrected flip angle
 	param_mr_str.flip_angle_correct = flip_angle_correct;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/simulate_pv
 	save('param_basis.mat', 'param_mr_str');
 
 end
