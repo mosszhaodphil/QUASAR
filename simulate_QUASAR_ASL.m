@@ -148,6 +148,7 @@ save_nii(blood_noise_nifty_file_handle, strcat(file_name_blood_noise, file_type_
 %print(blood_asl_figure_handle, '-dpng', file_name_blood, '-r300'); % save blood ASL signal time series figure
 
 % GM tissue compartment
+dlmwrite(strcat(file_name_aif_gm, file_type_txt), aif_gm_asl_signal); % save GM AIF ASL data to a text file
 dlmwrite(strcat(file_name_tissue_gm, file_type_txt), tissue_gm_asl_signal); % save GM tissue ASL data to a text file
 save_nii(tissue_gm_nifty_file_handle, strcat(file_name_tissue_gm, file_type_nifty)); % save GM tissue ASL nifty file
 save_nii(aif_gm_nifty_file_handle, strcat(file_name_aif_gm, file_type_nifty)); % save GM AIF ASL nifty file
@@ -155,6 +156,7 @@ save_nii(tc_gm_nifty_file_handle, strcat(file_name_tc_gm, file_type_nifty));
 %print(tissue_gm_asl_figure_handle, '-dpng', file_name_tissue_gm, '-r300'); % save tissue ASL signal time series figure
 
 % WM tissue compartment
+dlmwrite(strcat(file_name_aif_wm, file_type_txt), aif_wm_asl_signal); % save WM AIF ASL data to a text file
 dlmwrite(strcat(file_name_tissue_wm, file_type_txt), tissue_wm_asl_signal); % save WM tissue ASL data to a text file
 save_nii(tissue_wm_nifty_file_handle, strcat(file_name_tissue_wm, file_type_nifty)); % save WM tissue ASL nifty file
 save_nii(aif_wm_nifty_file_handle, strcat(file_name_aif_wm, file_type_nifty)); % save WM AIF ASL nifty file
@@ -176,9 +178,9 @@ save_nii(tc_pv_noise_nifty_file_handle, strcat(file_name_tc_pv_noise, file_type_
 %print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
 % Copy the default files to result directory
-copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
-copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
-copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
+%copyfile('../g.nii.gz', '.'); % Copy g file for flip angle correction
+%copyfile('../T1t.nii.gz', '.'); % Copy T1 tissue file
+%copyfile('../options.txt', '.'); % Copy parameters options file for model based analysis
 copyfile(strcat('../', mask, file_type_nifty), '.');
 copyfile(strcat('../', pvgm, file_type_nifty), '.');
 copyfile(strcat('../', pvwm, file_type_nifty), '.');
