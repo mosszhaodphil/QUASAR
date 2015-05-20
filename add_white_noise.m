@@ -1,16 +1,20 @@
 % This function adds white noise to signal
+% We add noise to each time point of the signal with same standard deviation
+% The noisy data has the same snr in each time series
 % Input parameters:
 % input_signal: noise free signal (vector or 4D)
 % snr: signal to noise ratio
+% sd: standard deviation
 % Output:
 % noisy_signal: noisy signal (vector or 4D)
 
-function noisy_signal = add_white_noise(input_signal, snr)
+function noisy_signal = add_white_noise(input_signal, snr, sd)
 	
 	% Check dimension
 	% Vector
 	if(ndims(input_signal) == 1)
-		noisy_signal = awgn(input_signal, snr, 'measured');
+		%noisy_signal = awgn(input_signal, snr, 'measured');
+		noisy_signal = input_signal + ( sd ./ snr .* randn(size(input_signal)) );
 	end
 
 	% 4D matrix
@@ -26,7 +30,8 @@ function noisy_signal = add_white_noise(input_signal, snr)
 					noise_free_signal = reshape(input_signal(i, j, k, :), [t, 1]);
 
 					% Add noise
-					noise_signal = awgn(noise_free_signal, snr, 'measured');
+					%noise_signal = awgn(noise_free_signal, snr, 'measured');
+					noise_signal = noise_free_signal + ( sd / snr * randn(size(noise_free_signal)) );
 
 					% Assign noisy signal to new matrix
 					noisy_signal(i, j, k, :) = noise_signal;

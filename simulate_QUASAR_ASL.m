@@ -119,16 +119,17 @@ tc_pv_nifty_file_handle = make_nifty_file(tc_pv_asl_matrix);  % Save raw ASL mat
 
 % Add some noise
 snr = param_user_str.snr;
-blood_asl_noise_matrix        = add_white_noise(blood_asl_matrix, snr);
+sd  = param_user_str.sd;
+blood_asl_noise_matrix        = add_white_noise(blood_asl_matrix, snr, sd);
 blood_noise_nifty_file_handle = make_nifty_file(blood_asl_noise_matrix);
 
-aif_pv_asl_noise_matrix        = add_white_noise(aif_pv_asl_matrix, snr);
+aif_pv_asl_noise_matrix        = add_white_noise(aif_pv_asl_matrix, snr, sd);
 aif_pv_noise_nifty_file_handle = make_nifty_file(aif_pv_asl_noise_matrix);
 
-tc_pv_asl_noise_matrix        = add_white_noise(tc_pv_asl_matrix, snr);
+tc_pv_asl_noise_matrix        = add_white_noise(tc_pv_asl_matrix, snr, sd);
 tc_pv_noise_nifty_file_handle = make_nifty_file(tc_pv_asl_noise_matrix);
 
-tissue_pv_asl_noise_matrix        = add_white_noise(tissue_pv_asl_matrix, snr);
+tissue_pv_asl_noise_matrix        = add_white_noise(tissue_pv_asl_matrix, snr, sd);
 tissue_pv_noise_nifty_file_handle = make_nifty_file(tissue_pv_asl_noise_matrix);
 
 % Plot summary curve (4x4) of four signals
