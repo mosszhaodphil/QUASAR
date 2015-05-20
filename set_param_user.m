@@ -28,6 +28,7 @@ function [] = set_param_user(varargin)
 	param_user_str.m_0a                  = 1; % equilibrium magnetization of arterial blood
 	param_user_str.inversion_efficiency  = 0.91; % inversion efficiency alpha, in postprocessing section of (ETP)
 	param_user_str.snr                   = 10; % signal to noise ratio
+	param_user_str.sd                    = 0.001; % standard deviation of noise
 	param_user_str.crush_efficiency      = 0; % percentage of arterial blood signal remaining after applying crusher gradients
 	
 	param_user_str.dispersion_type       = 1; % no dispersion
