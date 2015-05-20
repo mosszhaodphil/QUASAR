@@ -121,16 +121,16 @@ tc_pv_nifty_file_handle = make_nifty_file(tc_pv_asl_matrix);  % Save raw ASL mat
 snr = param_user_str.snr;
 sd  = param_user_str.sd;
 blood_asl_noise_matrix        = add_white_noise(blood_asl_matrix, snr, sd);
-blood_noise_nifty_file_handle = make_nifty_file(blood_asl_noise_matrix);
+blood_noise_nifty_file_handle = make_nifty_file(apply_mask(blood_asl_noise_matrix, mask));
 
 aif_pv_asl_noise_matrix        = add_white_noise(aif_pv_asl_matrix, snr, sd);
-aif_pv_noise_nifty_file_handle = make_nifty_file(aif_pv_asl_noise_matrix);
+aif_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(aif_pv_asl_noise_matrix, mask));
 
 tc_pv_asl_noise_matrix        = add_white_noise(tc_pv_asl_matrix, snr, sd);
-tc_pv_noise_nifty_file_handle = make_nifty_file(tc_pv_asl_noise_matrix);
+tc_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(tc_pv_asl_noise_matrix, mask));
 
 tissue_pv_asl_noise_matrix        = add_white_noise(tissue_pv_asl_matrix, snr, sd);
-tissue_pv_noise_nifty_file_handle = make_nifty_file(tissue_pv_asl_noise_matrix);
+tissue_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(tissue_pv_asl_noise_matrix, mask));
 
 % Plot summary curve (4x4) of four signals
 %summary_figure_handle = subplot_signal([tissue_asl_signal blood_asl_signal crushed_asl_signal noncrushed_asl_signal], param_user_str.t);
