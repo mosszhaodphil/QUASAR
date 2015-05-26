@@ -45,6 +45,7 @@ function [] = save_parameters()
 	fprintf(file_handle, 'Mask file: %s\n', strcat(param_user_str.mask, '.nii.gz'));
 	fprintf(file_handle, 'GM PV Map file: %s\n', strcat(param_user_str.pvgm, '.nii.gz'));
 	fprintf(file_handle, 'WM PV Map file: %s\n', strcat(param_user_str.pvwm, '.nii.gz'));
+	fprintf(file_handle, 'ABV Mask file: %s\n', strcat(param_user_str.abv_mask, '.nii.gz'));
 
 	fprintf(file_handle, '\n');
 

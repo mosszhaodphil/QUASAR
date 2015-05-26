@@ -42,6 +42,7 @@ file_type_nifty           = '.nii.gz'; % nifty file extension
 mask = param_user_str.mask;
 pvgm = param_user_str.pvgm;
 pvwm = param_user_str.pvwm;
+abv_mask = param_user_str.abv_mask;
 
 
 % Three compartment model: arterial blood, GM tissue, and WM tisue.
@@ -77,7 +78,7 @@ aif_gm_asl_figure_handle = plot_aif_signal(aif_gm_asl_signal, param_user_str.t);
 
 % Make a raw ASL matrix from crushed and noncrushed signals
 % This is equivelant to Label(Tag) minus Control (tc) of raw ASL signal
-tc_gm_asl_matrix        = make_raw_QUASAR_matrix(tissue_gm_asl_matrix, blood_asl_matrix);
+tc_gm_asl_matrix        = make_raw_QUASAR_matrix(tissue_gm_asl_matrix, blood_asl_matrix, abv_mask);
 tc_gm_nifty_file_handle = make_nifty_file(tc_gm_asl_matrix);  % Save raw ASL matrix in nifty file
 
 
@@ -103,7 +104,7 @@ aif_wm_asl_figure_handle = plot_aif_signal(aif_wm_asl_signal, param_user_str.t);
 
 % Make a raw ASL matrix from crushed and noncrushed signals
 % This is equivelant to Label(Tag) minus Control (tc) of raw ASL signal
-tc_wm_asl_matrix        = make_raw_QUASAR_matrix(tissue_wm_asl_matrix, blood_asl_matrix);
+tc_wm_asl_matrix        = make_raw_QUASAR_matrix(tissue_wm_asl_matrix, blood_asl_matrix, abv_mask);
 tc_wm_nifty_file_handle = make_nifty_file(tc_wm_asl_matrix);  % Save raw ASL matrix in nifty file
 
 
@@ -114,7 +115,7 @@ tissue_pv_nifty_file_handle = make_nifty_file(tissue_pv_asl_matrix);
 aif_pv_asl_matrix = add_partial_volume(aif_gm_asl_matrix, aif_wm_asl_matrix, pvgm, pvwm);
 aif_pv_nifty_file_handle = make_nifty_file(aif_pv_asl_matrix);
 
-tc_pv_asl_matrix = make_raw_QUASAR_matrix(tissue_pv_asl_matrix, blood_asl_matrix);
+tc_pv_asl_matrix = make_raw_QUASAR_matrix(tissue_pv_asl_matrix, blood_asl_matrix, abv_mask);
 tc_pv_nifty_file_handle = make_nifty_file(tc_pv_asl_matrix);  % Save raw ASL matrix in nifty file
 
 % Add some noise
