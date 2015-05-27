@@ -186,6 +186,7 @@ save_nii(tc_pv_noise_nifty_file_handle, strcat(file_name_tc_pv_noise, file_type_
 copyfile(strcat('../', mask, file_type_nifty), '.');
 copyfile(strcat('../', pvgm, file_type_nifty), '.');
 copyfile(strcat('../', pvwm, file_type_nifty), '.');
+copyfile(strcat('../', abv_mask, file_type_nifty), '.');
 
 % Move parameter file to result directory
 movefile('../parameters.txt', '.');
