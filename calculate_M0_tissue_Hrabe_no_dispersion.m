@@ -29,7 +29,8 @@ function tissue_m = calculate_M0_tissue_Hrabe_no_dispersion(t)
 
 		% Calculate R and F
 		R = 1 / t1_t_eff - 1 / t1_a_eff;
-		F = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f / param_mr_str.lamda * exp(- t(j) / t1_t_eff);
+		%F = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f / param_mr_str.lamda * exp(- t(j) / t1_t_eff);
+		F = 2 * param_user_str.inversion_efficiency * param_user_str.m_0a * param_user_str.f * exp(- t(j) / t1_t_eff);
 
 		% Calculate tissue magnetization, D(t) of eq [7]
 		if(t(j) < param_user_str.tau_t)
