@@ -31,7 +31,7 @@ function noisy_signal = add_white_noise(input_signal, snr, sd)
 
 					% Add noise
 					%noise_signal = awgn(noise_free_signal, snr, 'measured');
-					noise_signal = noise_free_signal + ( sd / snr * randn(size(noise_free_signal)) );
+					noise_signal = noise_free_signal + ( snr / sd * randn(size(noise_free_signal)) );
 
 					% Assign noisy signal to new matrix
 					noisy_signal(i, j, k, :) = noise_signal;
