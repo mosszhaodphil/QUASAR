@@ -10,11 +10,21 @@
 
 function noisy_signal = add_white_noise(input_signal, snr, sd)
 	
+
+
 	% Check dimension
 	% Vector
 	if(ndims(input_signal) == 1)
 		%noisy_signal = awgn(input_signal, snr, 'measured');
 		noisy_signal = input_signal + ( sd ./ snr .* randn(size(input_signal)) );
+
+		% define mean of input signal to be the maximum signal intensity
+		mu = max(input_signal);
+		sd = mu ./ snr;
+
+		% noise has zero mean and same standard deviation at each TI because it is background noise
+		% The random noise must follow a normal distribution with zero mean and sd
+		noisy_signal = input_signal + sd * randn(input_signal);
 	end
 
 	% 4D matrix
@@ -31,7 +41,15 @@ function noisy_signal = add_white_noise(input_signal, snr, sd)
 
 					% Add noise
 					%noise_signal = awgn(noise_free_signal, snr, 'measured');
-					noise_signal = noise_free_signal + ( snr / sd * randn(size(noise_free_signal)) );
+					%noise_signal = noise_free_signal + ( snr / sd * randn(size(noise_free_signal)) );
+
+					% define mean of input signal to be the maximum signal intensity
+					mu = max(noise_free_signal);
+					sd = mu ./ snr;
+
+					% noise has zero mean and same standard deviation at each TI because it is background noise
+					% The random noise must follow a normal distribution with zero mean and sd
+					noise_signal = noise_free_signal + sd * randn(size(noise_free_signal));
 
 					% Assign noisy signal to new matrix
 					noisy_signal(i, j, k, :) = noise_signal;
