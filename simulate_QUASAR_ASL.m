@@ -21,34 +21,65 @@ date_time_now    = clock; % get vector of current time
 date_time        = datestr(date_time_now, date_time_format); % convert current time vector to string
 dir_name         = strcat('output_', date_time); % Default directory name
 
-file_name_tissue_gm                = 'tissue_gm'; % file name to save Tissue ASL signal
-file_name_tissue_wm                = 'tissue_wm'; % file name to save Tissue ASL signal
-file_name_tissue_pv                = 'tissue_pv';
-file_name_tissue_pv_noise          = 'tissue_pv_noise';
-file_name_blood                    = 'arterial_blood'; % file name to save Blood ASL signal
-file_name_blood_noise              = 'arterial_blood_noise';
-file_name_aif_gm                   = 'aif_gm';
-file_name_aif_wm                   = 'aif_wm';
-file_name_aif_pv                   = 'aif_pv';
-file_name_aif_pv_noise             = 'aif_pv_noise';
-file_name_residue_gm               = 'residue_gm';
-file_name_residue_wm               = 'residue_wm';
-file_name_residue_pv               = 'residue_pv';
-file_name_residue_pv_noise         = 'residue_pv_noise';
-file_name_relaxation_gm            = 'relaxation_gm';
-file_name_relaxation_wm            = 'relaxation_wm';
-file_name_relaxation_pv            = 'relaxation_pv';
-file_name_relaxation_pv_noise      = 'relaxation_pv_noise';
-file_name_relaxation_product_gm       = 'relaxation_product_gm';
-file_name_relaxation_product_wm       = 'relaxation_product_wm';
-file_name_relaxation_product_pv       = 'relaxation_product_pv';
-file_name_relaxation_product_pv_noise = 'relaxation_product_pv_noise';
-file_name_tc_gm                    = 'tc_gm'; % file name to save raw ASl (Tag minus control tc) signal
-file_name_tc_wm                    = 'tc_wm'; % file name to save raw ASl (Tag minus control tc) signal
-file_name_tc_pv                    = 'tc_pv'; % file name to save raw ASl (Tag minus control tc) signal
-file_name_tc_pv_noise              = 'tc_pv_noise'; % file name to save raw ASl (Tag minus control tc) signal with noise
-file_type_txt                      = '.txt'; % text file extension
-file_type_nifty                    = '.nii.gz'; % nifty file extension
+file_name_tissue_gm                        = 'tissue_gm'; % file name to save Tissue ASL signal
+file_name_tissue_wm                        = 'tissue_wm'; % file name to save Tissue ASL signal
+
+file_name_tissue_pv                        = 'tissue_pv';
+file_name_tissue_pv_blur                   = 'tissue_pv_blur';
+file_name_tissue_pv_noise                  = 'tissue_pv_noise';
+file_name_tissue_pv_blur_noise             = 'tissue_pv_blur_noise';
+file_name_tissue_pv_noise_blur             = 'tissue_pv_noise_blur';
+
+file_name_blood                            = 'arterial_blood'; % file name to save Blood ASL signal
+file_name_blood_blur                       = 'blood_blur';
+file_name_blood_noise                      = 'blood_noise';
+file_name_blood_blur_noise                 = 'blood_blur_noise';
+file_name_blood_noise_blur                 = 'blood_noise_blur';
+
+file_name_aif_gm                           = 'aif_gm';
+file_name_aif_wm                           = 'aif_wm';
+file_name_aif_pv                           = 'aif_pv';
+file_name_aif_pv_blur                      = 'aif_pv_blur';
+file_name_aif_pv_noise                     = 'aif_pv_noise';
+file_name_aif_pv_blur_noise                = 'aif_pv_blur_noise';
+file_name_aif_pv_noise_blur                = 'aif_pv_noise_blur';
+
+file_name_residue_gm                       = 'residue_gm';
+file_name_residue_wm                       = 'residue_wm';
+file_name_residue_pv                       = 'residue_pv';
+file_name_residue_pv_blur                  = 'residue_pv_blur';
+file_name_residue_pv_noise                 = 'residue_pv_noise';
+file_name_residue_pv_blur_noise            = 'residue_pv_blur_noise';
+file_name_residue_pv_noise_blur            = 'residue_pv_noise_blur';
+
+file_name_relaxation_gm                    = 'relaxation_gm';
+file_name_relaxation_wm                    = 'relaxation_wm';
+file_name_relaxation_pv                    = 'relaxation_pv';
+file_name_relaxation_pv_blur               = 'relaxation_pv_blur';
+file_name_relaxation_pv_noise              = 'relaxation_pv_noise';
+file_name_relaxation_pv_blur_noise         = 'relaxation_pv_blur_noise';
+file_name_relaxation_pv_noise_blur         = 'relaxation_pv_noise_blur';
+
+
+file_name_relaxation_product_gm            = 'relaxation_product_gm';
+file_name_relaxation_product_wm            = 'relaxation_product_wm';
+file_name_relaxation_product_pv            = 'relaxation_product_pv';
+file_name_relaxation_product_pv_blur       = 'relaxation_product_pv_blur';
+file_name_relaxation_product_pv_noise      = 'relaxation_product_pv_noise';
+file_name_relaxation_product_pv_blur_noise = 'relaxation_product_pv_blur';
+file_name_relaxation_product_pv_noise_blur = 'relaxation_product_pv_noise';
+
+file_name_tc_gm                            = 'tc_gm'; % file name to save raw ASl (Tag minus control tc) signal
+file_name_tc_wm                            = 'tc_wm'; % file name to save raw ASl (Tag minus control tc) signal
+file_name_tc_pv                            = 'tc_pv'; % file name to save raw ASl (Tag minus control tc) signal
+file_name_tc_pv_blur                       = 'tc_pv_blur';
+file_name_tc_pv_noise                      = 'tc_pv_noise'; % file name to save raw ASl (Tag minus control tc) signal with noise
+file_name_tc_pv_blur_noise                 = 'tc_pv_blur_noise';
+file_name_tc_pv_noise_blur                 = 'tc_pv_noise_blur'; 
+
+
+file_type_txt                              = '.txt'; % text file extension
+file_type_nifty                            = '.nii.gz'; % nifty file extension
 
 % Mask and partial volume files
 mask = param_user_str.mask;
@@ -181,9 +212,36 @@ relaxation_product_pv_nifty_file_handle = make_nifty_file(relaxation_product_pv_
 tc_pv_asl_matrix        = make_raw_QUASAR_matrix(tissue_pv_asl_matrix, blood_asl_matrix, abv_mask);
 tc_pv_nifty_file_handle = make_nifty_file(tc_pv_asl_matrix);  % Save raw ASL matrix in nifty file
 
-% Add some noise
+% Add motion blur to clean image
+displacement = param_user_str.blur_length;
+rotation = param_user_str.blur_rotate;
+
+blood_asl_blur_matrix        = add_motion_blur(blood_asl_matrix, displacement, rotation);
+blood_blur_nifty_file_handle = make_nifty_file(apply_mask(blood_asl_blur_matrix, mask));
+
+aif_pv_asl_blur_matrix        = add_motion_blur(aif_pv_asl_matrix, displacement, rotation);
+aif_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(aif_pv_asl_blur_matrix, mask));
+
+tc_pv_asl_blur_matrix        = add_motion_blur(tc_pv_asl_matrix, displacement, rotation);
+tc_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(tc_pv_asl_blur_matrix, mask));
+
+tissue_pv_asl_blur_matrix        = add_motion_blur(tissue_pv_asl_matrix, displacement, rotation);
+tissue_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(tissue_pv_asl_blur_matrix, mask));
+
+residue_pv_asl_blur_matrix        = add_motion_blur(residue_pv_asl_matrix, displacement, rotation);
+residue_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(residue_pv_asl_blur_matrix, mask));
+
+relaxation_pv_asl_blur_matrix        = add_motion_blur(relaxation_pv_asl_matrix, displacement, rotation);
+relaxation_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(relaxation_pv_asl_blur_matrix, mask));
+
+relaxation_product_pv_asl_blur_matrix        = add_motion_blur(relaxation_product_pv_asl_matrix, displacement, rotation);
+relaxation_product_pv_blur_nifty_file_handle = make_nifty_file(apply_mask(relaxation_product_pv_asl_blur_matrix, mask));
+
+
+% Add some noise to clean image
 snr = param_user_str.snr;
 sd  = param_user_str.sd;
+
 blood_asl_noise_matrix        = add_white_noise(blood_asl_matrix, snr, sd);
 blood_noise_nifty_file_handle = make_nifty_file(apply_mask(blood_asl_noise_matrix, mask));
 
@@ -196,14 +254,61 @@ tc_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(tc_pv_asl_noise_matri
 tissue_pv_asl_noise_matrix        = add_white_noise(tissue_pv_asl_matrix, snr, sd);
 tissue_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(tissue_pv_asl_noise_matrix, mask));
 
-residue_pv_asl_noise_matrix = add_white_noise(residue_pv_asl_matrix, snr, sd);
+residue_pv_asl_noise_matrix        = add_white_noise(residue_pv_asl_matrix, snr, sd);
 residue_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(residue_pv_asl_noise_matrix, mask));
 
-relaxation_pv_asl_noise_matrix = add_white_noise(relaxation_pv_asl_matrix, snr, sd);
+relaxation_pv_asl_noise_matrix        = add_white_noise(relaxation_pv_asl_matrix, snr, sd);
 relaxation_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(relaxation_pv_asl_noise_matrix, mask));
 
-relaxation_product_pv_asl_noise_matrix = add_white_noise(relaxation_product_pv_asl_matrix, snr, sd);
+relaxation_product_pv_asl_noise_matrix        = add_white_noise(relaxation_product_pv_asl_matrix, snr, sd);
 relaxation_product_pv_noise_nifty_file_handle = make_nifty_file(apply_mask(relaxation_product_pv_asl_noise_matrix, mask));
+
+
+
+% Motion blur plus noise
+blood_asl_blur_noise_matrix        = add_white_noise(blood_asl_blur_matrix, snr, sd);
+blood_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(blood_asl_blur_noise_matrix, mask));
+
+aif_pv_asl_blur_noise_matrix        = add_white_noise(aif_pv_asl_blur_matrix, snr, sd);
+aif_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(aif_pv_asl_blur_noise_matrix, mask));
+
+tc_pv_asl_blur_noise_matrix        = add_white_noise(tc_pv_asl_blur_matrix, snr, sd);
+tc_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(tc_pv_asl_blur_noise_matrix, mask));
+
+tissue_pv_asl_blur_noise_matrix        = add_white_noise(tissue_pv_asl_blur_matrix, snr, sd);
+tissue_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(tissue_pv_asl_blur_noise_matrix, mask));
+
+residue_pv_asl_blur_noise_matrix        = add_white_noise(residue_pv_asl_blur_matrix, snr, sd);
+residue_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(residue_pv_asl_blur_noise_matrix, mask));
+
+relaxation_pv_asl_blur_noise_matrix        = add_white_noise(relaxation_pv_asl_blur_matrix, snr, sd);
+relaxation_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(relaxation_pv_asl_blur_noise_matrix, mask));
+
+relaxation_product_pv_asl_blur_noise_matrix        = add_white_noise(relaxation_product_pv_asl_blur_matrix, snr, sd);
+relaxation_product_pv_blur_noise_nifty_file_handle = make_nifty_file(apply_mask(relaxation_product_pv_asl_blur_noise_matrix, mask));
+
+
+% Noise plus motion blur
+blood_asl_noise_blur_matrix        = add_motion_blur(blood_asl_noise_matrix, displacement, rotation);
+blood_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(blood_asl_noise_blur_matrix, mask));
+
+aif_pv_asl_noise_blur_matrix        = add_motion_blur(aif_pv_asl_noise_matrix, displacement, rotation);
+aif_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(aif_pv_asl_noise_blur_matrix, mask));
+
+tc_pv_asl_noise_blur_matrix        = add_motion_blur(tc_pv_asl_noise_matrix, displacement, rotation);
+tc_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(tc_pv_asl_noise_blur_matrix, mask));
+
+tissue_pv_asl_noise_blur_matrix        = add_motion_blur(tissue_pv_asl_noise_matrix, displacement, rotation);
+tissue_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(tissue_pv_asl_noise_blur_matrix, mask));
+
+residue_pv_asl_noise_blur_matrix        = add_motion_blur(residue_pv_asl_noise_matrix, displacement, rotation);
+residue_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(residue_pv_asl_noise_blur_matrix, mask));
+
+relaxation_pv_asl_noise_blur_matrix        = add_motion_blur(relaxation_pv_asl_noise_matrix, displacement, rotation);
+relaxation_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(relaxation_pv_asl_noise_blur_matrix, mask));
+
+relaxation_product_pv_asl_noise_blur_matrix        = add_motion_blur(relaxation_product_pv_asl_noise_matrix, displacement, rotation);
+relaxation_product_pv_noise_blur_nifty_file_handle = make_nifty_file(apply_mask(relaxation_product_pv_asl_noise_blur_matrix, mask));
 
 
 
@@ -225,7 +330,11 @@ cd(dir_name);
 % Arterial blood compartment
 dlmwrite(strcat(file_name_blood, file_type_txt), blood_asl_signal); % save blood ASL data to a text file
 save_nii(blood_nifty_file_handle, strcat(file_name_blood, file_type_nifty)); % save blood ASL nifty file
+save_nii(blood_blur_nifty_file_handle, strcat(file_name_blood_blur, file_type_nifty));
 save_nii(blood_noise_nifty_file_handle, strcat(file_name_blood_noise, file_type_nifty));
+save_nii(blood_blur_noise_nifty_file_handle, strcat(file_name_blood_blur_noise, file_type_nifty));
+save_nii(blood_noise_blur_nifty_file_handle, strcat(file_name_blood_noise_blur, file_type_nifty));
+
 %print(blood_asl_figure_handle, '-dpng', file_name_blood, '-r300'); % save blood ASL signal time series figure
 
 % GM tissue compartment
@@ -267,6 +376,14 @@ save_nii(relaxation_pv_nifty_file_handle, strcat(file_name_relaxation_pv, file_t
 save_nii(relaxation_product_pv_nifty_file_handle, strcat(file_name_relaxation_product_pv, file_type_nifty));
 save_nii(tc_pv_nifty_file_handle, strcat(file_name_tc_pv, file_type_nifty));
 
+% Blurred ASL signal
+save_nii(tissue_pv_blur_nifty_file_handle, strcat(file_name_tissue_pv_blur, file_type_nifty));
+save_nii(aif_pv_blur_nifty_file_handle, strcat(file_name_aif_pv_blur, file_type_nifty));
+save_nii(residue_pv_blur_nifty_file_handle, strcat(file_name_residue_pv_blur, file_type_nifty));
+save_nii(relaxation_pv_blur_nifty_file_handle, strcat(file_name_relaxation_pv_blur, file_type_nifty));
+save_nii(relaxation_product_pv_blur_nifty_file_handle, strcat(file_name_relaxation_pv_blur, file_type_nifty));
+save_nii(tc_pv_blur_nifty_file_handle, strcat(file_name_tc_pv_blur, file_type_nifty));
+
 
 % Noisy ASL signal
 save_nii(tissue_pv_noise_nifty_file_handle, strcat(file_name_tissue_pv_noise, file_type_nifty));
@@ -275,6 +392,27 @@ save_nii(residue_pv_noise_nifty_file_handle, strcat(file_name_residue_pv_noise, 
 save_nii(relaxation_pv_noise_nifty_file_handle, strcat(file_name_relaxation_pv_noise, file_type_nifty));
 save_nii(relaxation_product_pv_noise_nifty_file_handle, strcat(file_name_relaxation_pv_noise, file_type_nifty));
 save_nii(tc_pv_noise_nifty_file_handle, strcat(file_name_tc_pv_noise, file_type_nifty));
+
+
+% Noise plus blurred ASL signal
+save_nii(tissue_pv_noise_blur_nifty_file_handle, strcat(file_name_tissue_pv_noise_blur, file_type_nifty));
+save_nii(aif_pv_noise_blur_nifty_file_handle, strcat(file_name_aif_pv_noise_blur, file_type_nifty));
+save_nii(residue_pv_noise_blur_nifty_file_handle, strcat(file_name_residue_pv_noise_blur, file_type_nifty));
+save_nii(relaxation_pv_noise_blur_nifty_file_handle, strcat(file_name_relaxation_pv_noise_blur, file_type_nifty));
+save_nii(relaxation_product_pv_noise_blur_nifty_file_handle, strcat(file_name_relaxation_pv_noise_blur, file_type_nifty));
+save_nii(tc_pv_noise_blur_nifty_file_handle, strcat(file_name_tc_pv_noise_blur, file_type_nifty));
+
+
+
+% Blurred plus noise ASL signal
+save_nii(tissue_pv_blur_noise_nifty_file_handle, strcat(file_name_tissue_pv_blur_noise, file_type_nifty));
+save_nii(aif_pv_blur_noise_nifty_file_handle, strcat(file_name_aif_pv_blur_noise, file_type_nifty));
+save_nii(residue_pv_blur_noise_nifty_file_handle, strcat(file_name_residue_pv_blur_noise, file_type_nifty));
+save_nii(relaxation_pv_blur_noise_nifty_file_handle, strcat(file_name_relaxation_pv_blur_noise, file_type_nifty));
+save_nii(relaxation_product_pv_blur_noise_nifty_file_handle, strcat(file_name_relaxation_pv_blur_noise, file_type_nifty));
+save_nii(tc_pv_blur_noise_nifty_file_handle, strcat(file_name_tc_pv_blur_noise, file_type_nifty));
+
+
 
 %print(summary_figure_handle, '-dpng', 'summary_plot', '-r300'); % save ASL signal time series figure
 
