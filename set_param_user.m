@@ -27,18 +27,26 @@ function [] = set_param_user(varargin)
 	param_user_str.t                     = 0.04 : 0.30 : 3.64; % sampling time pints, second variable must be equal to delta_ti
 	param_user_str.m_0a                  = 1; % equilibrium magnetization of arterial blood
 	param_user_str.inversion_efficiency  = 0.91; % inversion efficiency alpha, in postprocessing section of (ETP)
+	
+	% noise prarmeters
 	param_user_str.snr                   = 5; % signal to noise ratio (in percentage)
 	param_user_str.sd                    = 1000; % standard deviation of noise
-	param_user_str.blur_length           = 5; % motion blur displacement length (in pixels)
+	
+	% Gaussian blur parameters
+	param_user_str.sigma                 = 2; % sigma (SD) for Gaussian blur
+
+	% Motion blur parameters
+	param_user_str.blur_length           = 10; % motion blur displacement length (in pixels)
 	param_user_str.blur_rotate           = 10; % motion blur rotation counter clock wise (in degrees)
+	
 	param_user_str.crush_efficiency      = 0; % percentage of arterial blood signal remaining after applying crusher gradients
 	
 	param_user_str.dispersion_type       = 1; % no dispersion
 	
-	param_user_str.mask                  = 'mask'; % file name of Mask file
-	param_user_str.pvgm                  = 'pvgm_reg'; % file name of PV GM map
-	param_user_str.pvwm                  = 'pvwm_reg'; % file name of PV WM map
-	param_user_str.abv_mask              = 'abv_mask'; % file name of ABV mask
+	param_user_str.mask                  = 'ref_images/mask'; % file name of Mask file
+	param_user_str.pvgm                  = 'ref_images/pvgm_reg'; % file name of PV GM map
+	param_user_str.pvwm                  = 'ref_images/pvwm_reg'; % file name of PV WM map
+	param_user_str.abv_mask              = 'ref_images/abv_mask'; % file name of ABV mask
 
 	if(length(varargin) == 1)
 		current_handles                      = varargin{1};

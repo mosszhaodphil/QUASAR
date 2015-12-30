@@ -52,6 +52,8 @@ function [] = save_parameters()
 	fprintf(file_handle, 'SNR: %d\n', param_user_str.snr);
 	fprintf(file_handle, 'Standard deviation: %.6f \n', param_user_str.sd);
 
+	fprintf(file_handle, 'Gaussian blur sigma: %.2f\n', param_user_str.sigma);
+
 	fprintf(file_handle, 'Motion blur length: %d\n', param_user_str.blur_length);
 	fprintf(file_handle, 'Motion blur rotation: %d \n', param_user_str.blur_rotate);
 
