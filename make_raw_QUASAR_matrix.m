@@ -10,11 +10,16 @@
 % raw QUASAR 4D matrix
 
 
-function raw_QUASAR_matrix = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl_matrix)
+function raw_QUASAR_matrix = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl_matrix, abv_mask_file)
 
 	load('param_user.mat');
 	load('param_basis.mat');
 
+	% Load ABV mask file matrix
+	file_handle = load_nii(strcat(abv_mask_file, '.nii.gz'));
+	abv_matrix = file_handle.img;
+
+	% Construct suppressed signal
 	suppression_effect = zeros(6, 1); % suppression effect Sc(a,s) of eq [3] (MACQ)
 
 	% compute suppression effect of different flow directions
@@ -37,8 +42,29 @@ function raw_QUASAR_matrix = make_raw_QUASAR_matrix(tissue_asl_matrix, blood_asl
 	cycle_5 = tissue_asl_matrix + suppression_effect(5) * blood_asl_matrix;
 	cycle_6 = tissue_asl_matrix + suppression_effect(6) * blood_asl_matrix;
 
-	% Concatinate matrix along 4th dimension
-	raw_QUASAR_matrix = cat(4, cycle_1, cycle_2, cycle_3, cycle_4, cycle_5, cycle_6);
+	% Construct suppressed QUASAR matrix by concatinating matrix along 4th dimension, six phases
+	suppressed_QUASAR_matrix = cat(4, cycle_1, cycle_2, cycle_3, cycle_4, cycle_5, cycle_6);
+	% Construct tissue only QUASAR matrix by concatinating matrix along 4th dimension, six phases
+	tissue_QUASAR_matrix = cat(4, tissue_asl_matrix, tissue_asl_matrix, tissue_asl_matrix, tissue_asl_matrix, tissue_asl_matrix, tissue_asl_matrix);
+
+	[x, y, z, t] = size(tissue_QUASAR_matrix);
+	raw_QUASAR_matrix = zeros(x, y, z, t);
+
+	% Apply ABV mask
+	for i = 1 : x
+		for j = 1 : y
+			for k = 1 : z
+				% Condition that this voxel contains arterial blood
+				if(abv_matrix(i, j, k) > 0)
+					raw_QUASAR_matrix(i, j, k, :) = suppressed_QUASAR_matrix(i, j, k, :);
+
+				% Condition that this voxel contains tissue only
+				else
+					raw_QUASAR_matrix(i, j, k, :) = tissue_QUASAR_matrix(i, j, k, :);
+				end
+			end
+		end
+	end
 
 end
 
